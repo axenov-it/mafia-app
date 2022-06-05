@@ -1,11 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 
-import {
-  AbilityInterface,
-  AbilityTypesInterface,
-  GamerInterface,
-} from "../interfaces";
+import { AbilityInterface, AbilityTypesInterface } from "../interfaces";
 import { GamerCardWrap } from "./GamerCardWrap";
 
 import {
@@ -21,9 +17,10 @@ import {
 import GroupIcon from "@mui/icons-material/Group";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { GamerCardStatus } from "./GamerCardStatus";
+import { Gamer } from "../clases";
 
 interface Props {
-  gamer: GamerInterface;
+  gamer: Gamer;
   dataAbilities: AbilityInterface;
   onGamerPush: (gamerId: number) => void;
   onChageGamerAbility: (
@@ -38,7 +35,7 @@ export const GamerCard = ({
     isActive,
     isBlocked,
     title,
-    ability,
+    abilityType,
     isKilled,
     role: { name, priority, abilities },
   },
@@ -52,6 +49,7 @@ export const GamerCard = ({
       <Typography
         css={css`
           background: #ddd;
+          cursor: pointer;
           width: 100%;
           padding: 5px 10px;
         `}
@@ -75,7 +73,7 @@ export const GamerCard = ({
             padding: 10px;
           }
         `}
-        value={ability}
+        value={abilityType}
         onChange={(e: any) => onChageGamerAbility(id, e.target.value)}
       >
         {abilities.map((ability) => (

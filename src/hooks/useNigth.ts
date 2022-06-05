@@ -1,77 +1,88 @@
-import { useRef } from "react";
-import { GamerInterface } from "../interfaces";
-import { useGetGamerStatus } from "./useGetGamerStatus";
+import { useRef, useState } from "react";
+import { Ability, Gamer, GamerFactory } from "../clases";
+import { AddAnaliticInterface } from "../interfaces";
 
 interface ParamsInterface {
-  gamers: ReadonlyArray<GamerInterface>;
-  setGamers: (gamers: ReadonlyArray<GamerInterface>) => void;
+  gamers: ReadonlyArray<Gamer>;
+  setGamers: (gamers: ReadonlyArray<Gamer>) => void;
+  addAnaliticLog: (params: AddAnaliticInterface) => void;
 }
 
-export const useNight = ({ gamers, setGamers }: ParamsInterface) => {
-  const { getGamerStatus } = useGetGamerStatus();
+export const useNight = ({
+  gamers,
+  setGamers,
+  addAnaliticLog,
+}: ParamsInterface) => {
   const activeGamerIndex = useRef(-1);
 
-  console.log(activeGamerIndex);
+  const [nightSettings, setNigthSettings] = useState({
+    number: 0,
+    analytics: [] as {},
+  });
 
-  const getactiveGamerIndex = () =>
+  const getActiveGamerIndex = () =>
     gamers.findIndex(
       ({ role: { isActiveNight } }, index) =>
         isActiveNight && index > activeGamerIndex.current
     );
 
-  const setActiveGamer = () =>
+  const setActiveGamer = () => {
     setGamers(
-      gamers.map((gamer, index) => ({
-        ...gamer,
-        isActive: activeGamerIndex.current === index,
-      }))
-    );
-
-  const setGamerPushStatus = (gamerId: number) => {
-    const currentGamer = gamers[activeGamerIndex.current];
-    const pushGamer = gamers.find(({ id }) => id === gamerId);
-
-    console.log("CURRENT GAMER", currentGamer);
-
-    if (!pushGamer) return;
-
-    const gamerStatus = getGamerStatus(
-      currentGamer.ability,
-      pushGamer.incomingAbilities
-    );
-
-    setGamers(
-      gamers.map((gamer, index) => {
-        if (gamer.id === gamerId) {
-          return {
-            ...gamer,
-            incomingAbilities: [
-              ...gamer.incomingAbilities,
-              currentGamer.ability,
-            ],
-            ...gamerStatus,
-          };
-        }
-
-        return { ...gamer, isActive: activeGamerIndex.current === index };
-      })
+      gamers.map((gamer, index) =>
+        GamerFactory.cloneGamer(
+          gamer.setIsActive(activeGamerIndex.current === index)
+        )
+      )
     );
   };
 
-  const onGamerPush = (id: number) => {
+  const onGamerPush = (gamerId: number) => {
     // eslint-disable-next-line no-restricted-globals
     const isPush = confirm("Ви дійсно бажаете використати здібність ?");
 
-    if (isPush) {
-      activeGamerIndex.current = getactiveGamerIndex();
+    const currentGamer = gamers[activeGamerIndex.current];
+    const pushedGamer = gamers.find(({ id }) => id === gamerId);
 
-      setGamerPushStatus(id);
+    if (isPush && pushedGamer) {
+      const ability = new Ability(
+        currentGamer.abilityType,
+        nightSettings.number
+      );
+
+      pushedGamer.pushIncomingAbility(ability);
+
+      activeGamerIndex.current = getActiveGamerIndex();
+
+      const newGamers = gamers.map((gamer, index) => {
+        if (gamer.id === pushedGamer.id) {
+          return GamerFactory.cloneGamer(pushedGamer);
+        }
+
+        if (activeGamerIndex.current === index) {
+          return GamerFactory.cloneGamer(gamer.setIsActive(true));
+        }
+
+        return GamerFactory.cloneGamer(gamer.setIsActive(false));
+      });
+
+      addAnaliticLog({
+        currentGamer,
+        pushedGamer,
+        nightNumber: nightSettings.number,
+      });
+
+      setGamers(newGamers);
     }
   };
 
   const onPlayNigth = () => {
     if (activeGamerIndex.current === -1) {
-      activeGamerIndex.current = getactiveGamerIndex();
+      setNigthSettings({
+        ...nightSettings,
+        number: nightSettings.number + 1,
+      });
+
+      activeGamerIndex.current = getActiveGamerIndex();
       setActiveGamer();
     }
   };
@@ -79,5 +90,6 @@ export const useNight = ({ gamers, setGamers }: ParamsInterface) => {
   return {
     onPlayNigth,
     onGamerPush,
+    nightSettings,
   };
 };

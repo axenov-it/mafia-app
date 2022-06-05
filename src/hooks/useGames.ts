@@ -1,16 +1,11 @@
 import { useState } from "react";
-import { Gamer } from "../clases";
-import {
-  RoleInterface,
-  GamerInterface,
-  AbilityTypesInterface,
-} from "../interfaces";
+import { Gamer, GamerFactory } from "../clases";
+import { RoleInterface, AbilityTypesInterface } from "../interfaces";
 
 interface ReturnInterface {
-  gamers: ReadonlyArray<GamerInterface>;
+  gamers: ReadonlyArray<Gamer>;
   addGamer: (cardNumber: number, roleId: number) => void;
-  setActiveGamer: (gamerId: number) => void;
-  setGamers: (games: ReadonlyArray<GamerInterface>) => void;
+  setGamers: (games: ReadonlyArray<Gamer>) => void;
   onChageGamerAbility: (
     gamerId: number,
     abilityId: AbilityTypesInterface
@@ -28,7 +23,7 @@ export const useGames = ({
   disableRole,
   roles,
 }: ParamsInterface): ReturnInterface => {
-  const [gamers, setGamers] = useState([] as ReadonlyArray<GamerInterface>);
+  const [gamers, setGamers] = useState([] as ReadonlyArray<Gamer>);
 
   const addGamer = (cardNumber: number, roleId: number) => {
     const role = roles.find((r) => r.id === roleId) as RoleInterface;
@@ -36,7 +31,7 @@ export const useGames = ({
     deleteNumber(cardNumber);
     disableRole(roleId);
 
-    const gamer = new Gamer(cardNumber, role);
+    const gamer = GamerFactory.createGamer(cardNumber, role);
 
     setGamers(
       [...gamers, gamer].sort(
@@ -51,14 +46,10 @@ export const useGames = ({
   ) => {
     setGamers(
       gamers.map((gamer) =>
-        gamer.id === gamerId ? { ...gamer, ability: abilityId } : gamer
+        gamer.id === gamerId
+          ? GamerFactory.cloneGamer(gamer.setAbility(abilityId))
+          : gamer
       )
-    );
-  };
-
-  const setActiveGamer = (gamerId: number) => {
-    setGamers(
-      gamers.map((gamer) => ({ ...gamer, isActive: gamer.id === gamerId }))
     );
   };
 
@@ -66,7 +57,6 @@ export const useGames = ({
     gamers,
     setGamers,
     addGamer,
-    setActiveGamer,
     onChageGamerAbility,
   };
 };

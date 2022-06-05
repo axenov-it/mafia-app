@@ -1,11 +1,12 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { AbilityTypesInterface, GamerInterface } from "../interfaces";
+import { AbilityTypesInterface } from "../interfaces";
 import { GamerCard } from "./GamerCard";
 import dataAbilities from "../mocks/abilities.json";
+import { Gamer } from "../clases";
 
 interface Props {
-  gamers: ReadonlyArray<GamerInterface>;
+  gamers: ReadonlyArray<Gamer>;
   onGamerPush: (id: number) => void;
   onChageGamerAbility: (
     gamerId: number,
@@ -26,7 +27,7 @@ export const ListGamers = ({
       justify-content: center;
     `}
   >
-    {gamers.map((Gamer: GamerInterface) => (
+    {gamers.map((Gamer: Gamer) => (
       <GamerCard
         key={Gamer.id}
         gamer={Gamer}

@@ -1,3 +1,5 @@
+import { Gamer } from "./clases";
+
 export type AbilityTypesInterface =
   | "block"
   | "immortal"
@@ -34,4 +36,11 @@ export interface GamerInterface {
   isBlocked: boolean;
   incomingAbilities: ReadonlyArray<AbilityTypesInterface>;
   role: RoleInterface;
+  pushIncomingAbility: (ablility: AbilityTypesInterface) => void;
+}
+
+export interface AddAnaliticInterface {
+  nightNumber: number;
+  currentGamer: Gamer;
+  pushedGamer: Gamer;
 }

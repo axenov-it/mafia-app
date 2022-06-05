@@ -3,14 +3,28 @@ import { css } from "@emotion/react";
 import { Button } from "@mui/material";
 import { ListGamers } from "./components/ListGamers";
 import { AddCardPopup } from "./components/AddCardPopup";
-import { useRoles, useGames, usePopup, useNumbers, useNight } from "./hooks";
+import {
+  useRoles,
+  useGames,
+  usePopup,
+  useNumbers,
+  useNight,
+  useAnalitics,
+} from "./hooks";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import PlayCircleFilledWhiteIcon from "@mui/icons-material/PlayCircleFilledWhite";
+import { useEffect } from "react";
 
 function App() {
   const { handleClickOpen, handleClose, isOpen } = usePopup();
   const { roles, disableRole, resetRoles } = useRoles();
   const { numbers, deleteNumber, resetNumbers } = useNumbers();
+
+  const { addAnaliticLog, logs } = useAnalitics();
+
+  useEffect(() => {
+    console.log(logs);
+  }, [logs]);
 
   const { addGamer, gamers, setGamers, onChageGamerAbility } = useGames({
     deleteNumber,
@@ -18,7 +32,11 @@ function App() {
     roles,
   });
 
-  const { onPlayNigth, onGamerPush } = useNight({ gamers, setGamers });
+  const { onPlayNigth, onGamerPush, nightSettings } = useNight({
+    gamers,
+    setGamers,
+    addAnaliticLog,
+  });
 
   return (
     <div
@@ -48,7 +66,7 @@ function App() {
           margin-left: 15px;
         `}
       >
-        Почати ніч
+        Почати ніч: {nightSettings.number}
       </Button>
 
       <AddCardPopup

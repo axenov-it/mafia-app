@@ -23,7 +23,7 @@ export const GamerCardStatus = ({ isKilled, isBlocked }: Props) => {
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 26px;
+        font-size: 20px;
         text-transform: uppercase;
       `}
     >

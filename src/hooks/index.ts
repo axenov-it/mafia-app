@@ -3,4 +3,4 @@ export * from "./useRoles";
 export * from "./usePopup";
 export * from "./useNumbers";
 export * from "./useNigth";
-export * from "./useGetGamerStatus";
+export * from "./useAnalitics";
