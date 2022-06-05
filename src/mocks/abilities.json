@@ -1,0 +1,38 @@
+{
+  "block": {
+    "id": "block",
+    "name": "Блокування"
+  },
+  "immortal": {
+    "id": "immortal",
+    "name": "Бесмертя"
+  },
+  "healing": {
+    "id": "healing",
+    "name": "Лікування"
+  },
+  "collectiveKilling": {
+    "id": "collectiveKilling",
+    "name": "Вбивство мафії"
+  },
+  "checkRole": {
+    "id": "checkRole",
+    "name": "Перевірка на роль"
+  },
+  "checkPersonTeam": {
+    "id": "checkPersonTeam",
+    "name": "Перевірка на команду"
+  },
+  "killing": {
+    "id": "killing",
+    "name": "Вбивство"
+  },
+  "сomparePersonsTeam": {
+    "id": "сomparePersonsTeam",
+    "name": "Перевірка двох персон на команду"
+  },
+  "checkSheriffRole": {
+    "id": "checkSheriffRole",
+    "name": "Перевірка на шерифа"
+  }
+}
