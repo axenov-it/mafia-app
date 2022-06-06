@@ -18,7 +18,7 @@ export const GamerCardStatus = ({ isKilled, isBlocked }: Props) => {
         left: 0;
         right: 0;
         bottom: 0;
-        z-index: 100;
+        z-index: 10;
         color: #fff;
         display: flex;
         justify-content: center;

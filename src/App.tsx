@@ -32,7 +32,7 @@ function App() {
     roles,
   });
 
-  const { onPlayNigth, onGamerPush, nightSettings } = useNight({
+  const { onPlayNigth, onGamerPush, nightNumber } = useNight({
     gamers,
     setGamers,
     addAnaliticLog,
@@ -66,7 +66,7 @@ function App() {
           margin-left: 15px;
         `}
       >
-        Почати ніч: {nightSettings.number}
+        Почати ніч: {nightNumber}
       </Button>
 
       <AddCardPopup

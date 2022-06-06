@@ -28,15 +28,30 @@ export class Gamer {
     return this;
   }
 
+  resetGamer() {
+    this.isBlocked = false;
+    return this;
+  }
+
   pushIncomingAbility(ability: Ability) {
     const prevAbility =
       this.incomingAbilities[this.incomingAbilities.length - 1];
 
-    if (ability.id === "killing" && prevAbility.id !== "healing") {
+    const isKilled =
+      ability.id === "killing" || ability.id === "collectiveKilling";
+
+    const isBlocked = ability.id === "block" || ability.id === "immortalBlock";
+
+    const isDisableKilled = prevAbility
+      ? prevAbility.id === "healing" || prevAbility.id === "immortalBlock"
+      : false;
+
+    if (isKilled && !isDisableKilled) {
       this.isKilled = true;
+      this.isBlocked = false;
     }
 
-    if (ability.id === "block") {
+    if (isBlocked) {
       this.isBlocked = true;
     }
 

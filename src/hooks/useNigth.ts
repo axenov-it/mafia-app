@@ -15,15 +15,15 @@ export const useNight = ({
 }: ParamsInterface) => {
   const activeGamerIndex = useRef(-1);
 
-  const [nightSettings, setNigthSettings] = useState({
-    number: 0,
-    analytics: [] as {},
-  });
+  const [nightNumber, setNightNumber] = useState(1);
 
   const getActiveGamerIndex = () =>
     gamers.findIndex(
-      ({ role: { isActiveNight } }, index) =>
-        isActiveNight && index > activeGamerIndex.current
+      ({ role: { isActiveNight }, isBlocked, isKilled }, index) =>
+        isActiveNight &&
+        index > activeGamerIndex.current &&
+        !isBlocked &&
+        !isKilled
     );
 
   const setActiveGamer = () => {
@@ -36,6 +36,32 @@ export const useNight = ({
     );
   };
 
+  const updateGamers = (pushedGamer: Gamer) => {
+    const newGamers = gamers.map((gamer, index) => {
+      if (gamer.id === pushedGamer.id) {
+        return GamerFactory.cloneGamer(pushedGamer);
+      }
+
+      if (activeGamerIndex.current === index) {
+        return GamerFactory.cloneGamer(gamer.setIsActive(true));
+      }
+
+      return GamerFactory.cloneGamer(gamer.setIsActive(false));
+    });
+
+    setGamers(newGamers);
+  };
+
+  const setNigthEnd = () => {
+    setNightNumber(nightNumber + 1);
+
+    setGamers(
+      gamers.map((gamer) => {
+        return GamerFactory.cloneGamer(gamer.resetGamer());
+      })
+    );
+  };
+
   const onGamerPush = (gamerId: number) => {
     // eslint-disable-next-line no-restricted-globals
     const isPush = confirm("Ви дійсно бажаете використати здібність ?");
@@ -44,44 +70,28 @@ export const useNight = ({
     const pushedGamer = gamers.find(({ id }) => id === gamerId);
 
     if (isPush && pushedGamer) {
-      const ability = new Ability(
-        currentGamer.abilityType,
-        nightSettings.number
-      );
+      const ability = new Ability(currentGamer.abilityType, nightNumber);
 
       pushedGamer.pushIncomingAbility(ability);
 
       activeGamerIndex.current = getActiveGamerIndex();
 
-      const newGamers = gamers.map((gamer, index) => {
-        if (gamer.id === pushedGamer.id) {
-          return GamerFactory.cloneGamer(pushedGamer);
-        }
-
-        if (activeGamerIndex.current === index) {
-          return GamerFactory.cloneGamer(gamer.setIsActive(true));
-        }
-
-        return GamerFactory.cloneGamer(gamer.setIsActive(false));
-      });
+      updateGamers(pushedGamer);
 
       addAnaliticLog({
         currentGamer,
         pushedGamer,
-        nightNumber: nightSettings.number,
+        nightNumber,
       });
+    }
 
-      setGamers(newGamers);
+    if (activeGamerIndex.current === -1) {
+      setNigthEnd();
     }
   };
 
   const onPlayNigth = () => {
     if (activeGamerIndex.current === -1) {
-      setNigthSettings({
-        ...nightSettings,
-        number: nightSettings.number + 1,
-      });
-
       activeGamerIndex.current = getActiveGamerIndex();
       setActiveGamer();
     }
@@ -90,6 +100,6 @@ export const useNight = ({
   return {
     onPlayNigth,
     onGamerPush,
-    nightSettings,
+    nightNumber,
   };
 };

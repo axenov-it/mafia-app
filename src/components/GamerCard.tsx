@@ -52,6 +52,13 @@ export const GamerCard = ({
           cursor: pointer;
           width: 100%;
           padding: 5px 10px;
+          position: relative;
+          z-index: 20;
+          ${isActive &&
+          css`
+            box-shadow: 0 0 4px 4px #1976d263;
+            border: 2px solid #1976d2;
+          `}
         `}
         onClick={() => onGamerPush(id)}
         variant="h6"
@@ -69,6 +76,7 @@ export const GamerCard = ({
       <Select
         css={css`
           width: 100%;
+          max-width: 210px;
           .MuiInputBase-input {
             padding: 10px;
           }

@@ -16,7 +16,7 @@ export const GamerCardWrap = ({ isActive, priority, children }: Props) => (
   <Paper
     css={css`
       margin: 8px;
-      min-width: 220px;
+      min-width: 250px;
       position: relative;
     `}
     elevation={isActive ? 10 : 1}

@@ -7,6 +7,10 @@
     "id": "immortal",
     "name": "Бесмертя"
   },
+  "immortalBlock": {
+    "id": "immortal",
+    "name": "Бесмертя та блокування"
+  },
   "healing": {
     "id": "healing",
     "name": "Лікування"

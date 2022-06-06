@@ -10,6 +10,7 @@ export type AbilityTypesInterface =
   | "сomparePersonsTeam"
   | "checkSheriffRole"
   | "collectiveKilling"
+  | "immortalBlock"
   | "";
 
 export type AbilityInterface = Record<

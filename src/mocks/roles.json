@@ -6,7 +6,7 @@
     "isActiveNight": true,
     "isDisabled": false,
     "desctiption": "Грає за мирних, просинається у ночі та обирає одного гравця, цей гравець не має можливості використовувати свої здібності але і не може загинути",
-    "abilities": ["block", "immortal"]
+    "abilities": ["immortalBlock"]
   },
   {
     "id": 2,
