@@ -10,6 +10,7 @@ import {
   useNumbers,
   useNight,
   useAnalitics,
+  useDay,
 } from "./hooks";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import PlayCircleFilledWhiteIcon from "@mui/icons-material/PlayCircleFilledWhite";
@@ -37,6 +38,8 @@ function App() {
     setGamers,
     addAnaliticLog,
   });
+
+  const { onGamerKill } = useDay({ gamers, setGamers });
 
   return (
     <div
@@ -80,7 +83,7 @@ function App() {
       <ListGamers
         gamers={gamers}
         onGamerPush={onGamerPush}
-        onGamerKill={() => undefined}
+        onGamerKill={onGamerKill}
         onChageGamerAbility={onChageGamerAbility}
       />
     </div>

@@ -1,22 +1,28 @@
-import { useState } from "react";
-import { AnaliticLog } from "../clases/AnaliticLog";
-import { AddAnaliticInterface } from "../interfaces";
+import { Gamer, GamerFactory } from "../clases";
 
-export const useAnalitics = () => {
-  const [logs, setLogs] = useState([] as ReadonlyArray<AnaliticLog>);
+interface ParamsInterface {
+  gamers: ReadonlyArray<Gamer>;
+  setGamers: (gamers: ReadonlyArray<Gamer>) => void;
+}
 
-  const addAnaliticLog = ({
-    nightNumber,
-    currentGamer,
-    pushedGamer,
-  }: AddAnaliticInterface) => {
-    const log = new AnaliticLog(nightNumber, currentGamer, pushedGamer);
+export const useDay = ({ gamers, setGamers }: ParamsInterface) => {
+  const onGamerKill = (gamerId: number) => {
+    // eslint-disable-next-line no-restricted-globals
+    const isKill = confirm("Ви дійсно бажаете видалити гравця ?");
 
-    setLogs([...logs, log]);
+    if (!isKill) return;
+
+    setGamers(
+      gamers.map((gamer) => {
+        if (gamer.id === gamerId) {
+          return GamerFactory.cloneGamer(gamer.setIsKill(true));
+        }
+        return gamer;
+      })
+    );
   };
 
   return {
-    logs,
-    addAnaliticLog,
+    onGamerKill,
   };
 };

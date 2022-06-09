@@ -28,6 +28,11 @@ export class Gamer {
     return this;
   }
 
+  setIsKill(value: boolean) {
+    this.isKilled = value;
+    return this;
+  }
+
   resetGamer() {
     this.isBlocked = false;
     return this;
