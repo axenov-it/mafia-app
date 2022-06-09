@@ -1,8 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 
-import { AbilityInterface, AbilityTypesInterface } from "../interfaces";
+import {
+  AbilityInterface,
+  AbilityTypesInterface,
+  NigthPushTypes,
+} from "../interfaces";
 import { GamerCardWrap } from "./GamerCardWrap";
+import NextPlanIcon from "@mui/icons-material/NextPlan";
 
 import {
   Button,
@@ -22,7 +27,8 @@ import { Gamer } from "../clases";
 interface Props {
   gamer: Gamer;
   dataAbilities: AbilityInterface;
-  onGamerPush: (gamerId: number) => void;
+  onGamerPush: (gamerId: number, type: NigthPushTypes) => void;
+  onGamerKill: (gamerId: number) => void;
   onChageGamerAbility: (
     gamerId: number,
     abilityId: AbilityTypesInterface
@@ -41,6 +47,7 @@ export const GamerCard = ({
   },
   dataAbilities,
   onGamerPush,
+  onGamerKill,
   onChageGamerAbility,
 }: Props) => (
   <GamerCardWrap isActive={isActive} priority={priority}>
@@ -60,7 +67,7 @@ export const GamerCard = ({
             border: 2px solid #1976d2;
           `}
         `}
-        onClick={() => onGamerPush(id)}
+        onClick={() => onGamerPush(id, "push")}
         variant="h6"
       >
         {title}
@@ -92,9 +99,21 @@ export const GamerCard = ({
       </Select>
     </ListItem>
     <ListItem>
-      <Button variant="contained" color="info" startIcon={<DeleteIcon />}>
-        Вилучити
-      </Button>
+      <Button
+        css={css`
+          margin-right: 5px;
+        `}
+        variant="contained"
+        color="info"
+        startIcon={<DeleteIcon />}
+        onClick={() => onGamerKill(id)}
+      />
+      <Button
+        onClick={() => onGamerPush(id, "next")}
+        variant="contained"
+        color="info"
+        startIcon={<NextPlanIcon />}
+      />
     </ListItem>
   </GamerCardWrap>
 );

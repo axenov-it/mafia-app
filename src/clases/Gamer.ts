@@ -38,7 +38,7 @@ export class Gamer {
       this.incomingAbilities[this.incomingAbilities.length - 1];
 
     const isKilled =
-      ability.id === "killing" || ability.id === "collectiveKilling";
+      ability.id === "killing" || ability.id === "collectiveMafiaKilling";
 
     const isBlocked = ability.id === "block" || ability.id === "immortalBlock";
 

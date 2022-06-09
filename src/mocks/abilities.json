@@ -15,8 +15,8 @@
     "id": "healing",
     "name": "Лікування"
   },
-  "collectiveKilling": {
-    "id": "collectiveKilling",
+  "collectiveMafiaKilling": {
+    "id": "collectiveMafiaKilling",
     "name": "Вбивство мафії"
   },
   "checkRole": {

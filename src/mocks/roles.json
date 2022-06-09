@@ -33,7 +33,7 @@
     "isDisabled": false,
     "priority": 4,
     "desctiption": "Лідер мафії, Просинаеться у ночі. Вирішує разом зі своєю командою в кого мафія буде стріляти у ночі",
-    "abilities": ["collectiveKilling"]
+    "abilities": ["collectiveMafiaKilling"]
   },
   {
     "id": 5,
@@ -42,7 +42,7 @@
     "isDisabled": false,
     "priority": 5,
     "desctiption": "Грає за мафію",
-    "abilities": ["collectiveKilling"]
+    "abilities": ["collectiveMafiaKilling"]
   },
   {
     "id": 6,

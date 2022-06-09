@@ -9,9 +9,11 @@ export type AbilityTypesInterface =
   | "killing"
   | "сomparePersonsTeam"
   | "checkSheriffRole"
-  | "collectiveKilling"
+  | "collectiveMafiaKilling"
   | "immortalBlock"
   | "";
+
+export type NigthPushTypes = "push" | "next";
 
 export type AbilityInterface = Record<
   AbilityTypesInterface,

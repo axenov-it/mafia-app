@@ -80,6 +80,7 @@ function App() {
       <ListGamers
         gamers={gamers}
         onGamerPush={onGamerPush}
+        onGamerKill={() => undefined}
         onChageGamerAbility={onChageGamerAbility}
       />
     </div>

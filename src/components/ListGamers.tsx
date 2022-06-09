@@ -1,13 +1,14 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { AbilityTypesInterface } from "../interfaces";
+import { AbilityTypesInterface, NigthPushTypes } from "../interfaces";
 import { GamerCard } from "./GamerCard";
 import dataAbilities from "../mocks/abilities.json";
 import { Gamer } from "../clases";
 
 interface Props {
   gamers: ReadonlyArray<Gamer>;
-  onGamerPush: (id: number) => void;
+  onGamerPush: (id: number, type: NigthPushTypes) => void;
+  onGamerKill: (id: number) => void;
   onChageGamerAbility: (
     gamerId: number,
     abilityId: AbilityTypesInterface
@@ -18,6 +19,7 @@ export const ListGamers = ({
   gamers,
   onGamerPush,
   onChageGamerAbility,
+  onGamerKill,
 }: Props) => (
   <div
     css={css`
@@ -32,6 +34,7 @@ export const ListGamers = ({
         key={Gamer.id}
         gamer={Gamer}
         onGamerPush={onGamerPush}
+        onGamerKill={onGamerKill}
         dataAbilities={dataAbilities as any}
         onChageGamerAbility={onChageGamerAbility}
       />

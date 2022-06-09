@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { Ability, Gamer, GamerFactory } from "../clases";
-import { AddAnaliticInterface } from "../interfaces";
+import { AddAnaliticInterface, NigthPushTypes } from "../interfaces";
 
 interface ParamsInterface {
   gamers: ReadonlyArray<Gamer>;
@@ -39,7 +39,7 @@ export const useNight = ({
   const updateGamers = (pushedGamer: Gamer) => {
     const newGamers = gamers.map((gamer, index) => {
       if (gamer.id === pushedGamer.id) {
-        return GamerFactory.cloneGamer(pushedGamer);
+        return GamerFactory.cloneGamer(pushedGamer.setIsActive(false));
       }
 
       if (activeGamerIndex.current === index) {
@@ -62,28 +62,30 @@ export const useNight = ({
     );
   };
 
-  const onGamerPush = (gamerId: number) => {
+  const onGamerPush = (gamerId: number, type: NigthPushTypes) => {
     // eslint-disable-next-line no-restricted-globals
     const isPush = confirm("Ви дійсно бажаете використати здібність ?");
 
+    if (!isPush) return;
+
     const currentGamer = gamers[activeGamerIndex.current];
-    const pushedGamer = gamers.find(({ id }) => id === gamerId);
+    const pushedGamer = gamers.find(({ id }) => id === gamerId) as Gamer;
 
-    if (isPush && pushedGamer) {
-      const ability = new Ability(currentGamer.abilityType, nightNumber);
+    const ability = new Ability(currentGamer.abilityType, nightNumber);
 
+    if (type !== "next") {
       pushedGamer.pushIncomingAbility(ability);
-
-      activeGamerIndex.current = getActiveGamerIndex();
-
-      updateGamers(pushedGamer);
-
-      addAnaliticLog({
-        currentGamer,
-        pushedGamer,
-        nightNumber,
-      });
     }
+
+    activeGamerIndex.current = getActiveGamerIndex();
+
+    updateGamers(pushedGamer);
+
+    addAnaliticLog({
+      currentGamer,
+      pushedGamer,
+      nightNumber,
+    });
 
     if (activeGamerIndex.current === -1) {
       setNigthEnd();
