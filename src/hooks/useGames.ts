@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Gamer, GamerFactory } from "../clases";
 import { RoleInterface, AbilityTypesInterface } from "../interfaces";
+import { useDefaultGames } from "./useDefaultGamers";
 
 interface ReturnInterface {
   gamers: ReadonlyArray<Gamer>;
@@ -23,7 +24,8 @@ export const useGames = ({
   disableRole,
   roles,
 }: ParamsInterface): ReturnInterface => {
-  const [gamers, setGamers] = useState([] as ReadonlyArray<Gamer>);
+  const { defaultGamers } = useDefaultGames()
+  const [gamers, setGamers] = useState(defaultGamers as ReadonlyArray<Gamer>);
 
   const addGamer = (cardNumber: number, roleId: number) => {
     const role = roles.find((r) => r.id === roleId) as RoleInterface;
