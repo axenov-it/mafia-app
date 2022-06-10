@@ -47,3 +47,7 @@ export interface AddAnaliticInterface {
   currentGamer: Gamer;
   pushedGamer: Gamer;
 }
+
+export type OnChageGamerAbilityInterface = (
+  gamerId: number
+) => (e: any) => void;

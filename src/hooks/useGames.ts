@@ -1,16 +1,13 @@
 import { useState } from "react";
 import { Gamer, GamerFactory } from "../clases";
-import { RoleInterface, AbilityTypesInterface } from "../interfaces";
+import { OnChageGamerAbilityInterface, RoleInterface } from "../interfaces";
 import { useDefaultGames } from "./useDefaultGamers";
 
 interface ReturnInterface {
   gamers: ReadonlyArray<Gamer>;
   addGamer: (cardNumber: number, roleId: number) => void;
   setGamers: (games: ReadonlyArray<Gamer>) => void;
-  onChageGamerAbility: (
-    gamerId: number,
-    abilityId: AbilityTypesInterface
-  ) => void;
+  onChageGamerAbility: OnChageGamerAbilityInterface;
 }
 
 interface ParamsInterface {
@@ -42,14 +39,11 @@ export const useGames = ({
     );
   };
 
-  const onChageGamerAbility = (
-    gamerId: number,
-    abilityId: AbilityTypesInterface
-  ) => {
+  const onChageGamerAbility = (gamerId: number) => (e: any) => {
     setGamers(
       gamers.map((gamer) =>
         gamer.id === gamerId
-          ? GamerFactory.cloneGamer(gamer.setAbility(abilityId))
+          ? GamerFactory.cloneGamer(gamer.setAbility(e.target.value))
           : gamer
       )
     );

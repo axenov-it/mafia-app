@@ -36,20 +36,8 @@ export const useNight = ({
     );
   };
 
-  const updateGamers = (pushedGamer: Gamer) => {
-    const newGamers = gamers.map((gamer, index) => {
-      if (gamer.id === pushedGamer.id) {
-        return GamerFactory.cloneGamer(pushedGamer.setIsActive(false));
-      }
-
-      if (activeGamerIndex.current === index) {
-        return GamerFactory.cloneGamer(gamer.setIsActive(true));
-      }
-
-      return GamerFactory.cloneGamer(gamer.setIsActive(false));
-    });
-
-    setGamers(newGamers);
+  const updateGamers = () => {
+    setGamers(gamers.map((gamer) => GamerFactory.cloneGamer(gamer)));
   };
 
   const setNigthEnd = () => {
@@ -62,18 +50,20 @@ export const useNight = ({
     );
   };
 
-  const onGamerPush = (gamerId: number, type: NigthPushTypes) => {
-    const message =
-      type === "next"
-        ? "Ви дійсно бажаете перейти до наступного гравця ?"
-        : "Ви дійсно бажаете використати здібність ?";
+  const getMessagePush = (type: NigthPushTypes) =>
+    type === "next"
+      ? "Ви дійсно бажаете перейти до наступного гравця ?"
+      : "Ви дійсно бажаете використати здібність ?";
 
+  const onGamerPush = (gamerId: number, type: NigthPushTypes) => {
     // eslint-disable-next-line no-restricted-globals
-    const isPush = confirm(message);
+    const isPush = confirm(getMessagePush(type));
 
     if (!isPush) return;
 
     const currentGamer = gamers[activeGamerIndex.current];
+    currentGamer.setIsActive(false);
+
     const pushedGamer = gamers.find(({ id }) => id === gamerId) as Gamer;
 
     const ability = new Ability(currentGamer.abilityType, nightNumber);
@@ -84,7 +74,11 @@ export const useNight = ({
 
     activeGamerIndex.current = getActiveGamerIndex();
 
-    updateGamers(pushedGamer);
+    const nextGamer = gamers[activeGamerIndex.current];
+
+    if (nextGamer) nextGamer.setIsActive(true);
+
+    updateGamers();
 
     addAnaliticLog({
       currentGamer,
@@ -92,7 +86,7 @@ export const useNight = ({
       nightNumber,
     });
 
-    if (activeGamerIndex.current === -1) {
+    if (!nextGamer) {
       setNigthEnd();
     }
   };
