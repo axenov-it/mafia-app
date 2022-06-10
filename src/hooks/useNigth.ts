@@ -63,8 +63,13 @@ export const useNight = ({
   };
 
   const onGamerPush = (gamerId: number, type: NigthPushTypes) => {
+    const message =
+      type === "next"
+        ? "Ви дійсно бажаете перейти до наступного гравця ?"
+        : "Ви дійсно бажаете використати здібність ?";
+
     // eslint-disable-next-line no-restricted-globals
-    const isPush = confirm("Ви дійсно бажаете використати здібність ?");
+    const isPush = confirm(message);
 
     if (!isPush) return;
 

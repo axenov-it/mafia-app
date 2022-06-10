@@ -44,7 +44,7 @@ function App() {
   return (
     <div
       css={css`
-        max-width: 700px;
+        max-width: 900px;
         margin: auto;
         background: #ddd;
         padding: 15px;

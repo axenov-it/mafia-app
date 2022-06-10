@@ -24,7 +24,7 @@ export const useGames = ({
   disableRole,
   roles,
 }: ParamsInterface): ReturnInterface => {
-  const { defaultGamers } = useDefaultGames()
+  const { defaultGamers } = useDefaultGames(6);
   const [gamers, setGamers] = useState(defaultGamers as ReadonlyArray<Gamer>);
 
   const addGamer = (cardNumber: number, roleId: number) => {
