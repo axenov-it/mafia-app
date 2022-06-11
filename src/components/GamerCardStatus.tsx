@@ -4,13 +4,15 @@ import { css } from "@emotion/react";
 interface Props {
   isBlocked: boolean;
   isKilled: boolean;
+  onDbClick: () => void;
 }
 
-export const GamerCardStatus = ({ isKilled, isBlocked }: Props) => {
+export const GamerCardStatus = ({ isKilled, isBlocked, onDbClick }: Props) => {
   const isRender = isKilled || isBlocked;
 
   return isRender ? (
     <div
+      onDoubleClick={onDbClick}
       css={css`
         position: absolute;
         background: #00000059;

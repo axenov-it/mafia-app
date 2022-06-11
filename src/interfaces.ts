@@ -23,6 +23,7 @@ export type AbilityInterface = Record<
 export interface RoleInterface {
   id: number;
   name: string;
+  type: "mafia" | "city" | "self";
   priority: number;
   isActiveNight: boolean;
   isDisabled: boolean;

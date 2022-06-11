@@ -17,6 +17,7 @@ import { GamerCardStatus } from "./GamerCardStatus";
 import { Gamer } from "../clases";
 import { GamerCardTitle } from "./GamerCardTitle";
 import { GamerCardSelect } from "./GamerCardSelect";
+import { GamerCardIcon } from "./GamerCardIcon";
 
 interface Props {
   gamer: Gamer;
@@ -24,6 +25,7 @@ interface Props {
   onGamerPush: (gamerId: number, type: NigthPushTypes) => void;
   onGamerKill: (gamerId: number) => void;
   onChageGamerAbility: OnChageGamerAbilityInterface;
+  onResetGamerAll: (gamerId: number) => () => void;
 }
 
 export const GamerCard = ({
@@ -34,15 +36,20 @@ export const GamerCard = ({
     title,
     abilityType,
     isKilled,
-    role: { name, priority, abilities },
+    role: { name, priority, abilities, type },
   },
   dataAbilities,
   onGamerPush,
   onGamerKill,
   onChageGamerAbility,
+  onResetGamerAll,
 }: Props) => (
   <GamerCardWrap isActive={isActive} priority={priority}>
-    <GamerCardStatus isBlocked={isBlocked} isKilled={isKilled} />
+    <GamerCardStatus
+      isBlocked={isBlocked}
+      isKilled={isKilled}
+      onDbClick={onResetGamerAll(id)}
+    />
     <ListItem>
       <GamerCardTitle
         isActive={isActive}
@@ -51,10 +58,7 @@ export const GamerCard = ({
       />
     </ListItem>
     <ListItem>
-      <ListItemIcon>
-        <GroupIcon />
-      </ListItemIcon>
-      <ListItemText primary={name} />
+      <GamerCardIcon name={name} type={type} />
     </ListItem>
     <ListItem>
       <GamerCardSelect

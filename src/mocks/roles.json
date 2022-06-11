@@ -1,6 +1,7 @@
 [
   {
     "id": 1,
+    "type": "city",
     "name": "Красуня",
     "priority": 1,
     "isActiveNight": true,
@@ -10,6 +11,7 @@
   },
   {
     "id": 2,
+    "type": "mafia",
     "name": "Крадій",
     "isActiveNight": true,
     "isDisabled": false,
@@ -20,6 +22,7 @@
   {
     "id": 3,
     "name": "Лікарка",
+    "type": "city",
     "isActiveNight": true,
     "isDisabled": false,
     "priority": 3,
@@ -29,6 +32,7 @@
   {
     "id": 4,
     "name": "Хрещений батько",
+    "type": "mafia",
     "isActiveNight": true,
     "isDisabled": false,
     "priority": 4,
@@ -38,6 +42,7 @@
   {
     "id": 5,
     "name": "Мафіозі",
+    "type": "mafia",
     "isActiveNight": true,
     "isDisabled": false,
     "priority": 5,
@@ -47,6 +52,7 @@
   {
     "id": 6,
     "name": "Мафіозі",
+    "type": "mafia",
     "isActiveNight": true,
     "isDisabled": false,
     "priority": 5,
@@ -56,6 +62,7 @@
   {
     "id": 7,
     "name": "Адвокат",
+    "type": "city",
     "isActiveNight": true,
     "isDisabled": false,
     "priority": 6,
@@ -65,6 +72,7 @@
   {
     "id": 8,
     "name": "Шериф",
+    "type": "city",
     "isActiveNight": true,
     "isDisabled": false,
     "priority": 7,
@@ -74,6 +82,7 @@
   {
     "id": 9,
     "name": "Маніяк",
+    "type": "self",
     "isActiveNight": true,
     "isDisabled": false,
     "priority": 8,
@@ -83,6 +92,7 @@
   {
     "id": 10,
     "name": "Детектив",
+    "type": "city",
     "isActiveNight": true,
     "isDisabled": false,
     "priority": 9,
@@ -92,6 +102,7 @@
   {
     "id": 11,
     "name": "Шанувальниця",
+    "type": "city",
     "isActiveNight": true,
     "isDisabled": false,
     "priority": 10,
@@ -101,6 +112,7 @@
   {
     "id": 12,
     "name": "Мирний мешканець",
+    "type": "city",
     "isActiveNight": false,
     "isDisabled": false,
     "priority": 20,
@@ -110,6 +122,7 @@
   {
     "id": 13,
     "name": "Мирний мешканець",
+    "type": "city",
     "isActiveNight": false,
     "isDisabled": false,
     "priority": 20,
@@ -119,6 +132,7 @@
   {
     "id": 14,
     "name": "Мирний мешканець",
+    "type": "city",
     "isActiveNight": false,
     "isDisabled": false,
     "priority": 20,

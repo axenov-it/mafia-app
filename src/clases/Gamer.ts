@@ -38,6 +38,14 @@ export class Gamer {
     return this;
   }
 
+  resetGamerAll() {
+    this.isBlocked = false;
+    this.isActive = false;
+    this.isKilled = false;
+
+    return this;
+  }
+
   pushIncomingAbility(ability: Ability) {
     const prevAbility =
       this.incomingAbilities[this.incomingAbilities.length - 1];

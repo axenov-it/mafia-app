@@ -10,6 +10,7 @@ interface Props {
   onGamerPush: (id: number, type: NigthPushTypes) => void;
   onGamerKill: (id: number) => void;
   onChageGamerAbility: OnChageGamerAbilityInterface;
+  onResetGamerAll: (gamerId: number) => () => void;
 }
 
 export const ListGamers = ({
@@ -17,6 +18,7 @@ export const ListGamers = ({
   onGamerPush,
   onChageGamerAbility,
   onGamerKill,
+  onResetGamerAll,
 }: Props) => (
   <div
     css={css`
@@ -34,6 +36,7 @@ export const ListGamers = ({
         onGamerKill={onGamerKill}
         dataAbilities={dataAbilities as any}
         onChageGamerAbility={onChageGamerAbility}
+        onResetGamerAll={onResetGamerAll}
       />
     ))}
   </div>

@@ -18,8 +18,8 @@ import { useEffect } from "react";
 
 function App() {
   const { handleClickOpen, handleClose, isOpen } = usePopup();
-  const { roles, disableRole, resetRoles } = useRoles();
-  const { numbers, deleteNumber, resetNumbers } = useNumbers();
+  const { roles, disableRole } = useRoles();
+  const { numbers, deleteNumber } = useNumbers();
 
   const { addAnaliticLog, logs } = useAnalitics();
 
@@ -27,11 +27,12 @@ function App() {
     console.log(logs);
   }, [logs]);
 
-  const { addGamer, gamers, setGamers, onChageGamerAbility } = useGames({
-    deleteNumber,
-    disableRole,
-    roles,
-  });
+  const { addGamer, gamers, setGamers, onChageGamerAbility, onResetGamerAll } =
+    useGames({
+      deleteNumber,
+      disableRole,
+      roles,
+    });
 
   const { onPlayNigth, onGamerPush, nightNumber } = useNight({
     gamers,
@@ -85,6 +86,7 @@ function App() {
         onGamerPush={onGamerPush}
         onGamerKill={onGamerKill}
         onChageGamerAbility={onChageGamerAbility}
+        onResetGamerAll={onResetGamerAll}
       />
     </div>
   );
