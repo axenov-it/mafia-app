@@ -1,0 +1,53 @@
+[
+  {
+    "isActive": false,
+    "name": "acquaintance",
+    "isRepeat": false,
+    "isRequired": true,
+    "isUsed": false,
+    "action": "acquaintance",
+    "gamerRoleTime": 1
+  },
+  {
+    "isActive": false,
+    "type": "night",
+    "isRepeat": false,
+    "isRequired": true,
+    "isUsed": false,
+    "action": "setRoles"
+  },
+  {
+    "isActive": false,
+    "type": "night",
+    "isRepeat": true,
+    "isRequired": true,
+    "isUsed": false,
+    "action": "runNightGamers"
+  },
+  {
+    "isActive": false,
+    "type": "day",
+    "isRepeat": true,
+    "isRequired": true,
+    "isUsed": false,
+    "action": "meeting",
+    "meetingTime": 2
+  },
+  {
+    "isActive": false,
+    "type": "day",
+    "isRepeat": true,
+    "isRequired": true,
+    "isUsed": false,
+    "action": "voting",
+    "gamerRoleTime": 1
+  },
+  {
+    "isActive": false,
+    "type": "day",
+    "isRepeat": true,
+    "isRequired": false,
+    "isUsed": false,
+    "action": "roulette"
+  }
+]
