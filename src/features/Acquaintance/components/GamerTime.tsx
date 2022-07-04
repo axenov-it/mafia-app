@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 import { useTimeSecond } from "../hooks/useTimeSecond";
 
 export const GamerTime = () => {
-  const { time } = useTimeSecond();
+  const counter = useTimeSecond();
 
   return (
     <div
@@ -27,7 +27,7 @@ export const GamerTime = () => {
           font-weight: 700;
         `}
       >
-        {time}
+        {counter}
       </p>
     </div>
   );

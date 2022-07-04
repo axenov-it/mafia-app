@@ -1,16 +1,20 @@
 import { useState, useEffect } from "react";
 
 export const useTimeSecond = () => {
-  const [time, setTimeSecond] = useState(60);
+  const [time, setTimeSecond] = useState(10);
+
   useEffect(() => {
     const addTimeSecond = setInterval(() => {
-      setTimeSecond(time - 1);
+      setTimeSecond((time) => {
+        if (time < 1) {
+          clearInterval(addTimeSecond);
+          return 0;
+        }
+        return time - 1;
+      });
     }, 1000);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-    return () => {
-      clearInterval(addTimeSecond);
-    };
-  }, [time]);
-
-  return { time, clearInterval };
+  return time;
 };

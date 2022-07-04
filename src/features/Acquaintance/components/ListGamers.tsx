@@ -1,11 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { Gamer } from "./Gamer";
-import { useAcquaintanceHoks } from "../hooks/useAcquaintanceHoks";
+import { useGamers } from "../hooks/useGamers";
 import { GamerCard } from "./GamerCard";
 
 export const ListGamers = () => {
-  const { area } = useAcquaintanceHoks();
+  const { gamers } = useGamers();
 
   return (
     <div
@@ -25,8 +25,8 @@ export const ListGamers = () => {
           gap: 15px;
         `}
       >
-        {area.map((item) => (
-          <Gamer key={item.id} item={item} />
+        {gamers.map((gamer) => (
+          <Gamer key={gamer.id} gamer={gamer} />
         ))}
       </div>
       <GamerCard />

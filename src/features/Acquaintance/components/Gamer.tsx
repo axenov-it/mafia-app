@@ -3,10 +3,10 @@ import { css } from "@emotion/react";
 import { GamerInterface } from "../interfaces";
 
 interface Props {
-  item: GamerInterface;
+  gamer: GamerInterface;
 }
 
-export const Gamer = ({ item }: Props) => (
+export const Gamer = ({ gamer }: Props) => (
   <div
     css={css`
       width: 40px;
@@ -31,7 +31,7 @@ export const Gamer = ({ item }: Props) => (
         font-size: 20px;
       `}
     >
-      {item.id}
+      {gamer.id}
     </p>
   </div>
 );
