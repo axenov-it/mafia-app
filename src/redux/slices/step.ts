@@ -1,15 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../store";
-
-// Define a type for the slice state
-interface StepState {
-  step: string;
-}
+import { StepInterface } from "../../common/interfaces";
 
 // Define the initial state using that type
-const initialState: StepState = {
-  step: "hello step",
+const initialState: StepInterface = {
+  isActive: false,
+  type: "acquaintance",
+  isRepeat: false,
+  isRequired: true,
+  isUsed: false,
+  action: "acquaintance",
+  gamerRoleTime: 1,
 };
 
 export const stepSlice = createSlice({
@@ -17,8 +19,8 @@ export const stepSlice = createSlice({
   // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
-    setStep: (state, action: PayloadAction<string>) => {
-      state.step = action.payload;
+    setStep: (state, action: PayloadAction<StepInterface>) => {
+      return { ...state, ...action.payload };
     },
   },
 });
@@ -26,6 +28,6 @@ export const stepSlice = createSlice({
 export const { setStep } = stepSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
-export const selectStep = (state: RootState) => state.step.step;
+export const selectStep = (state: RootState) => state.step;
 
 export const stepReducer = stepSlice.reducer;

@@ -1,6 +1,6 @@
 export interface StepInterface {
   isActive: boolean;
-  name: string;
+  type: string;
   isRepeat: boolean;
   isRequired: boolean;
   isUsed: boolean;

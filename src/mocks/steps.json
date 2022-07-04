@@ -1,7 +1,7 @@
 [
   {
     "isActive": false,
-    "name": "acquaintance",
+    "type": "acquaintance",
     "isRepeat": false,
     "isRequired": true,
     "isUsed": false,
