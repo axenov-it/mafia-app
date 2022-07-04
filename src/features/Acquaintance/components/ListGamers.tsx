@@ -3,7 +3,6 @@ import { css } from "@emotion/react";
 import { Player } from "./Player";
 import { useAcquaintanceHoks} from "../hooks/useAcquaintanceHoks";
 
-
 export const ListGamers = () => {
   const { area } = useAcquaintanceHoks()
   return (

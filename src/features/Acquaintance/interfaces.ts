@@ -1,3 +1,4 @@
 export interface Acquaintance {
-    name: number
+ id:number;
+ isActiv:boolean;
 }
