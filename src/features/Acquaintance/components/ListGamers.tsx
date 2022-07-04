@@ -16,11 +16,12 @@ export const ListGamers = () => {
     >
       <div
         css={css`
-          max-width: 1200px;
+          max-width: 900px;
           padding: 50px 10px 50px 10px;
           margin: auto;
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+          display: flex;
+          justify-content: center;
+          align-items: center;
           gap: 15px;
         `}
       >
