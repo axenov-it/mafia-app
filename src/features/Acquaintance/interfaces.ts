@@ -1,3 +1,4 @@
-export interface Acquaintance {
-    name: number
+export interface GamerInterface {
+ id:number;
+ isActiv:boolean;
 }
