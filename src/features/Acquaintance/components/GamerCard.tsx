@@ -11,6 +11,8 @@ export const GamerCard = () => (
       display: flex;
       margin-top: 50px;
       position: relative;
+      background: url(./img/guns.jpg) no-repeat;
+      background-size: cover;
     `}
   >
     <div>
