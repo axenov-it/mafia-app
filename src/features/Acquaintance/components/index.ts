@@ -1,2 +1,2 @@
-export * from './GettingPlayers'
-export * from './Players'
+export * from './ListGamers'
+export * from './Player'

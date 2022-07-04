@@ -1,3 +1,3 @@
-import { GettingPlayers } from "./components";
+import { ListGamers } from "./components";
 
-export const Acquaintance = () => <GettingPlayers/>
+export const Acquaintance = () => <ListGamers />;
