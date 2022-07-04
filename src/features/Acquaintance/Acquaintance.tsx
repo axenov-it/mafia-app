@@ -1,1 +1,3 @@
-export const Acquaintance = () => <h2>Acquaintance</h2>
+import { GettingPlayers } from "./components";
+
+export const Acquaintance = () => <GettingPlayers/>

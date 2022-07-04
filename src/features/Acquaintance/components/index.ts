@@ -1,1 +1,2 @@
-export * from './ChildComponent'
+export * from './GettingPlayers'
+export * from './Players'
