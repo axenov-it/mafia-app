@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import type { RootState } from "../../store";
+import type { RootState } from "../store";
 
 // Define a type for the slice state
 interface StepState {
@@ -28,4 +28,4 @@ export const { setStep } = stepSlice.actions;
 // Other code such as selectors can use the imported `RootState` type
 export const selectStep = (state: RootState) => state.step.step;
 
-export default stepSlice.reducer;
+export const stepReducer = stepSlice.reducer;

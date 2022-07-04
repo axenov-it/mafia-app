@@ -1,11 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import actionReduser from "./modules/step";
-import gameReduser from "./modules/game";
+import { gameReducer, stepReducer } from "./slices";
 
 export const store = configureStore({
   reducer: {
-    step: actionReduser,
-    game: gameReduser,
+    game: gameReducer,
+    step: stepReducer,
   },
 });
 

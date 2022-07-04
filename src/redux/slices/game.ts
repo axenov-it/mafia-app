@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import type { RootState } from "../../store";
+import type { RootState } from "../store";
 
 // Define a type for the slice state
 interface GameState {
@@ -28,4 +28,4 @@ export const { setGame } = gameSlice.actions;
 // Other code such as selectors can use the imported `RootState` type
 export const selectGame = (state: RootState) => state.game.game;
 
-export default gameSlice.reducer;
+export const gameReducer = gameSlice.reducer;
