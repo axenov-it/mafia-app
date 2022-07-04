@@ -3,29 +3,29 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../../store";
 
 // Define a type for the slice state
-interface ActionState {
-  action: string;
+interface GameState {
+  game: string;
 }
 
 // Define the initial state using that type
-const initialState: ActionState = {
-  action: "hello action",
+const initialState: GameState = {
+  game: "hello game",
 };
 
-export const actionSlice = createSlice({
-  name: "action",
+export const gameSlice = createSlice({
+  name: "game",
   // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
-    setAction: (state, action: PayloadAction<string>) => {
-      state.action = action.payload;
+    setGame: (state, action: PayloadAction<string>) => {
+      state.game = action.payload;
     },
   },
 });
 
-export const { setAction } = actionSlice.actions;
+export const { setGame } = gameSlice.game;
 
 // Other code such as selectors can use the imported `RootState` type
-export const selectAction = (state: RootState) => state.action.action;
+export const selectGame = (state: RootState) => state.game.game;
 
-export default actionSlice.reducer;
+export default gameSlice.reducer;
