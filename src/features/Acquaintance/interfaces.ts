@@ -1,4 +1,4 @@
-export interface Acquaintance {
+export interface AcquaintanceInterface {
  id:number;
  isActiv:boolean;
 }

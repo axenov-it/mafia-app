@@ -1,9 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import{Acquaintance} from "../interfaces"
+import{AcquaintanceInterface} from "../interfaces"
 
 interface Props {
-  item:Acquaintance;
+  item:AcquaintanceInterface;
  }
 
 export const Player = ({ item }:Props) => {
