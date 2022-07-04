@@ -1,0 +1,1 @@
+export const Meeting = () => <h2>Meeting</h2>

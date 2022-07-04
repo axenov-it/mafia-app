@@ -1,0 +1,1 @@
+export const Acquaintance = () => <h2>Acquaintance</h2>
