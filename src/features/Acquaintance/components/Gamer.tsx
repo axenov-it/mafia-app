@@ -7,21 +7,27 @@ interface Props {
 }
 
 export const Gamer = ({ item }: Props) => (
-  <div>
-    <div
+  <div
+    css={css`
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: white;
+      border: 1px solid;
+      margin: auto;
+      box-shadow: 8px 9px 27px rgba(0, 0, 0, 1);
+      font-family: "Raleway", sans-serif;
+    `}
+  >
+    <p
       css={css`
-        width: 30px;
-        height: 30px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: white;
-        border: 1px solid;
-        margin: auto;
-        box-shadow: 8px 9px 27px rgba(0, 0, 0, 1);
+        font-weight: 500;
+        font-size: 20px;
       `}
     >
       {item.id}
-    </div>
+    </p>
   </div>
 );
