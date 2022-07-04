@@ -19,6 +19,9 @@ export const Gamer = ({ item }: Props) => (
       margin: auto;
       box-shadow: 8px 9px 27px rgba(0, 0, 0, 1);
       font-family: "Raleway", sans-serif;
+      :hover {
+        background-color: #444444;
+      }
     `}
   >
     <p

@@ -31,6 +31,8 @@ export const GamerCard = () => (
         width: 250px;
         height: 100%;
         border: 1px solid;
+        background: url(./img/images.jpeg) no-repeat;
+        background-size: cover;
       `}
     ></div>
     <GamerTime />
