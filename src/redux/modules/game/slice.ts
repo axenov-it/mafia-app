@@ -23,7 +23,7 @@ export const gameSlice = createSlice({
   },
 });
 
-export const { setGame } = gameSlice.game;
+export const { setGame } = gameSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectGame = (state: RootState) => state.game.game;
