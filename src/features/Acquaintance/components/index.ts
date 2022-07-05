@@ -1,2 +1,3 @@
-export * from './ListGamers'
-export * from './Gamer'
+export * from "./GamerStepper";
+export * from "./Gamer";
+export * from "./GamerCard";

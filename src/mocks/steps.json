@@ -6,11 +6,13 @@
     "isRequired": true,
     "isUsed": false,
     "action": "acquaintance",
+    "scene": "acquaintance",
     "gamerRoleTime": 1
   },
   {
     "isActive": false,
     "type": "night",
+    "scene": "roles",
     "isRepeat": false,
     "isRequired": true,
     "isUsed": false,
@@ -19,6 +21,7 @@
   {
     "isActive": false,
     "type": "night",
+    "scene": "gamers",
     "isRepeat": true,
     "isRequired": true,
     "isUsed": false,
@@ -27,6 +30,7 @@
   {
     "isActive": false,
     "type": "day",
+    "scene": "meeting",
     "isRepeat": true,
     "isRequired": true,
     "isUsed": false,
@@ -36,6 +40,7 @@
   {
     "isActive": false,
     "type": "day",
+    "scene": "voting",
     "isRepeat": true,
     "isRequired": true,
     "isUsed": false,
@@ -45,6 +50,7 @@
   {
     "isActive": false,
     "type": "day",
+    "scene": "roulette",
     "isRepeat": true,
     "isRequired": false,
     "isUsed": false,

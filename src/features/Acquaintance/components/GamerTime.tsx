@@ -2,33 +2,35 @@
 import { css } from "@emotion/react";
 import { useTimeSecond } from "../hooks/useTimeSecond";
 
-export const GamerTime = () => {
-  const counter = useTimeSecond();
+interface Props {
+  cooldown: number;
+  format?: "m" | "s";
+  className?: any;
+}
+
+export const GamerTime = ({ className, cooldown, format }: Props) => {
+  const timeTikerRef = useTimeSecond(cooldown, format);
 
   return (
     <div
+      className={className}
       css={css`
         width: 150px;
         height: 150px;
-        border-radius: 50%;
-        border: 1px solid;
         display: flex;
         justify-content: center;
         align-items: center;
-        position: absolute;
-        right: 300px;
-        top: -30px;
-        background-color: white;
+        font-size: 40px;
+        font-weight: bold;
+        background: url(img/oclock4.png);
+        background-size: cover;
+        span {
+          text-align: center;
+          background: white;
+        }
       `}
     >
-      <p
-        css={css`
-          font-size: 40px;
-          font-weight: 700;
-        `}
-      >
-        {counter}
-      </p>
+      <span ref={timeTikerRef} />
     </div>
   );
 };

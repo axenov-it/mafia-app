@@ -5,38 +5,30 @@ import { GamerTime } from "./GamerTime";
 export const GamerCard = () => (
   <div
     css={css`
-      height: 400px;
-      padding: 20px;
-      border: 1px solid;
       display: flex;
-      margin-top: 50px;
       position: relative;
-      background: url(./img/guns.jpg) no-repeat;
-      background-size: cover;
+      margin-top: 15px;
+      border: 1px solid;
+      padding: 50px 15px;
     `}
   >
-    <div>
-      <p
-        css={css`
-          margin: 0px;
-          font-size: 30px;
-          font-weight: 500;
-          font-family: "Raleway", sans-serif;
-          padding-right: 20px;
-        `}
-      >
-        Игрок : 1
-      </p>
-    </div>
-    <div
+    <GamerTime
+      cooldown={2}
       css={css`
-        width: 250px;
-        height: 100%;
-        border: 1px solid;
-        background: url(./img/images.jpeg) no-repeat;
-        background-size: cover;
+        position: absolute;
+        right: 20px;
+        top: 20px;
       `}
-    ></div>
-    <GamerTime />
+    />
+
+    <img
+      css={css`
+        max-width: 500px;
+        width: 100%;
+        margin: auto;
+      `}
+      src="./img/gamer.jpg"
+      alt="img"
+    />
   </div>
 );

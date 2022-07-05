@@ -16,8 +16,6 @@ export const Gamer = ({ gamer }: Props) => (
       align-items: center;
       background-color: white;
       border: 1px solid;
-      margin: auto;
-      box-shadow: 8px 9px 27px rgba(0, 0, 0, 1);
       font-family: "Raleway", sans-serif;
       cursor: pointer;
       :hover {

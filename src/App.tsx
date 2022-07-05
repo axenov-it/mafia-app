@@ -1,24 +1,20 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { Acquaintance } from "./features";
+import { Header, Scene } from "./features";
 
 function App() {
-
   return (
-    <div><Acquaintance/>
     <div
       css={css`
-        max-width: 900px;
-        margin: auto;
-        background: #ddd;
-        padding: 15px;
+        max-width: 820px;
+        margin: 0 auto;
+        * {
+          box-sizing: border-box;
+        }
       `}
     >
-
-      <h2>MAFIA GAME</h2>
-    
-
-    </div>
+      <Header />
+      <Scene />
     </div>
   );
 }
