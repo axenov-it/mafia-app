@@ -8,9 +8,6 @@ function App() {
       css={css`
         max-width: 820px;
         margin: 0 auto;
-        * {
-          box-sizing: border-box;
-        }
       `}
     >
       <Header />

@@ -8,7 +8,6 @@ export const GamerCard = () => (
       display: flex;
       position: relative;
       margin-top: 15px;
-      border: 1px solid;
       padding: 50px 15px;
     `}
   >

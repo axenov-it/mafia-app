@@ -12,7 +12,6 @@ export const GamerStepper = () => {
         display: flex;
         justify-content: center;
         align-items: center;
-        border: 1px solid;
         padding: 15px 15px;
         gap: 15px;
         .MuiPaginationItem-root {
