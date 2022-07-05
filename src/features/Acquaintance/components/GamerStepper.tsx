@@ -12,7 +12,7 @@ export const GamerStepper = () => {
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: 40px 0;
+        margin: 15px 0;
         padding: 15px;
         background: #c7a0a01c;
         gap: 15px;
