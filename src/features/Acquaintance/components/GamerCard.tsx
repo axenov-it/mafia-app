@@ -13,7 +13,7 @@ export const GamerCard = () => (
     `}
   >
     <GamerTime
-      cooldown={2}
+      cooldown={1}
       css={css`
         position: absolute;
         right: 20px;
@@ -21,11 +21,28 @@ export const GamerCard = () => (
       `}
     />
 
+    <h2
+      css={css`
+        position: absolute;
+        left: 50px;
+        top: 20px;
+        margin: 0;
+        border-bottom: 1px solid;
+      `}
+    >
+      Гравець 1
+    </h2>
+
     <img
       css={css`
         max-width: 500px;
         width: 100%;
         margin: auto;
+
+        @media (max-width: 545px) {
+          max-width: 180px;
+          margin: 0;
+        }
       `}
       src="./img/gamer.jpg"
       alt="img"

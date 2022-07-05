@@ -9,8 +9,9 @@ interface Props {
 export const Gamer = ({ gamer }: Props) => (
   <div
     css={css`
-      width: 40px;
-      height: 40px;
+      width: 60px;
+      height: 60px;
+      padding: 10px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -20,13 +21,14 @@ export const Gamer = ({ gamer }: Props) => (
       cursor: pointer;
       :hover {
         background-color: #444444;
+        color: white;
       }
     `}
   >
     <p
       css={css`
         font-weight: 500;
-        font-size: 20px;
+        font-size: 40px;
       `}
     >
       {gamer.id}

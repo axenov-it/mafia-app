@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { Gamer } from "./Gamer";
+import Pagination from "@mui/material/Pagination";
 import { useGamers } from "../hooks/useGamers";
 
 export const GamerStepper = () => {
@@ -15,11 +15,21 @@ export const GamerStepper = () => {
         border: 1px solid;
         padding: 15px 15px;
         gap: 15px;
+        .MuiPaginationItem-root {
+          height: 70px;
+          width: 50px;
+        }
       `}
     >
-      {gamers.map((gamer) => (
-        <Gamer key={gamer.id} gamer={gamer} />
-      ))}
+      <Pagination
+        hideNextButton
+        hidePrevButton
+        count={gamers.length}
+        variant="outlined"
+        shape="rounded"
+        page={1}
+        siblingCount={0}
+      />
     </div>
   );
 };
