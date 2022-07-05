@@ -3,6 +3,7 @@ export type sceneTypes =
   | "cards"
   | "meeting"
   | "roulette"
+  | "setting"
   | "voting";
 
 export interface StepInterface {
