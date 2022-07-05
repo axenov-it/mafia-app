@@ -12,7 +12,7 @@ const getFormatedTime = (min: number, sek: number) => {
   return `${sek}`;
 };
 
-export const useTimeSecond = (cooldown: number, format: "m" | "s" = "m") => {
+export const useCooldown = (cooldown: number, format: "m" | "s" = "m") => {
   const sekCount = useRef(60);
   const minCount = useRef(cooldown);
 

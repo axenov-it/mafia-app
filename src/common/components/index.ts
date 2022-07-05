@@ -1,2 +1,5 @@
 export * from "./ResetStyles";
-export * from "./SceneTitle";
+export * from "./Title";
+export * from "./Header";
+export * from "./Cooldown";
+export * from "./Scene";

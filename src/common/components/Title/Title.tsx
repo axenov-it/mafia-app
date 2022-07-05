@@ -6,7 +6,7 @@ interface Props {
   children: ReactNode;
 }
 
-export const SceneTitle = ({ children }: Props) => (
+export const Title = ({ children }: Props) => (
   <h2
     css={css`
       text-align: center;

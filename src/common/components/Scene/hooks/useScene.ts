@@ -1,7 +1,6 @@
-import { Acquaintance } from "../../Acquaintance";
-import { Meeting } from "../../Meeting";
-import { useSelector, selectStep } from "../../../redux";
-import { sceneTypes } from "../../../common/interfaces";
+import { sceneTypes, StepInterface } from "common/interfaces";
+import { useSelector, selectStep } from "redux-store";
+import { Acquaintance, Meeting } from "scenes";
 
 const Scenes: Record<sceneTypes, () => JSX.Element> = {
   acquaintance: Acquaintance,
@@ -12,7 +11,7 @@ const Scenes: Record<sceneTypes, () => JSX.Element> = {
 };
 
 export const useScene = () => {
-  const step = useSelector(selectStep);
+  const step = useSelector<StepInterface>(selectStep);
 
   return Scenes[step.scene];
 };

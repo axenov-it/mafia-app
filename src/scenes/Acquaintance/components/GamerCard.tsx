@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { GamerTime } from "./GamerTime";
+import { Cooldown } from "common/components";
 
 export const GamerCard = () => (
   <div
@@ -10,8 +10,8 @@ export const GamerCard = () => (
       margin-top: 15px;
     `}
   >
-    <GamerTime
-      cooldown={1}
+    <Cooldown
+      cooldownTime={1}
       css={css`
         position: absolute;
         right: 40px;

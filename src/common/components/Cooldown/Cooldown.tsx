@@ -1,15 +1,15 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { useTimeSecond } from "../hooks/useTimeSecond";
+import { useCooldown } from "./hooks";
 
 interface Props {
-  cooldown: number;
+  cooldownTime: number;
   format?: "m" | "s";
   className?: any;
 }
 
-export const GamerTime = ({ className, cooldown, format }: Props) => {
-  const timeTikerRef = useTimeSecond(cooldown, format);
+export const Cooldown = ({ className, cooldownTime, format }: Props) => {
+  const timeTikerRef = useCooldown(cooldownTime, format);
 
   return (
     <div

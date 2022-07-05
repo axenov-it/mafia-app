@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { Header, Scene } from "./features";
+import { Header, Scene } from "common/components";
 
 function App() {
   return (
