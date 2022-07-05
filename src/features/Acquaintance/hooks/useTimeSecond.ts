@@ -43,7 +43,7 @@ export const useTimeSecond = (cooldown: number, format: "m" | "s" = "m") => {
       if (sekCount.current === 0) {
         clearInterval(addTimeSecond);
       }
-    }, 500);
+    }, 1000);
 
     return () => {
       clearInterval(addTimeSecond);
