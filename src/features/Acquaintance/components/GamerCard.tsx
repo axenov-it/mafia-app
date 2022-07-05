@@ -8,25 +8,25 @@ export const GamerCard = () => (
       display: flex;
       position: relative;
       margin-top: 15px;
-      padding: 50px 15px;
     `}
   >
     <GamerTime
       cooldown={1}
       css={css`
         position: absolute;
-        right: 20px;
-        top: 20px;
+        right: 40px;
+        top: 80px;
       `}
     />
 
     <h2
       css={css`
         position: absolute;
-        left: 50px;
+        right: 40px;
         top: 20px;
         margin: 0;
         border-bottom: 1px solid;
+        font-size: 32px;
       `}
     >
       Гравець 1
@@ -36,11 +36,12 @@ export const GamerCard = () => (
       css={css`
         max-width: 500px;
         width: 100%;
-        margin: auto;
+        margin-left: 30px;
 
-        @media (max-width: 545px) {
-          max-width: 180px;
-          margin: 0;
+        @media (max-width: 680px) {
+          max-width: 200px;
+          margin-top: 25px;
+          margin-left: 15px;
         }
       `}
       src="./img/gamer.jpg"
