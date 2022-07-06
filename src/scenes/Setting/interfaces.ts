@@ -1,3 +1,5 @@
-export interface Meeting {
-    name: number
-}
+export interface IFormInputs {
+    numberPlayers: string;
+    age: number;
+  }
+  

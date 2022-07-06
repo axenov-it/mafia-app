@@ -1,1 +1,3 @@
-export const Setting = () => <h2>Setting</h2>;
+import { SettingForm } from "./components";
+
+export const Setting = () => <SettingForm />;
