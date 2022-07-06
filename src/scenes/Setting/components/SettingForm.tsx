@@ -4,7 +4,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { useSetting } from "../hooks/useSetting";
 
-export const SettingForm = () => {
+export const SettingForm = ({ children }: any) => {
   const { handleSubmit, onSubmit, register, errors } = useSetting();
 
   return (
@@ -49,14 +49,14 @@ export const SettingForm = () => {
           css={css`
             margin: 0px;
             height: 30px;
-            display: flex;
-            align-items: center;
             color: red;
+            line-height: 20px;
             text-decoration: underline;
           `}
         >
           {errors.numberPlayers?.message}
         </p>
+        {children}
         <Button type="submit" variant="outlined">
           Зберегти
         </Button>
