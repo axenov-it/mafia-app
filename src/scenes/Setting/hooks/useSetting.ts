@@ -1,10 +1,11 @@
 import * as React from "react";
 import { useForm } from "react-hook-form";
 import { IFormInputs } from "../interfaces";
-import  { SelectChangeEvent } from "@mui/material/Select";
+import { SelectChangeEvent } from "@mui/material/Select";
 
 export const useSetting = () => {
   const [personName, setPersonName] = React.useState<string[]>([]);
+  const [numberPlayers, setNumberPlayers] = React.useState(0);
   const {
     register,
     formState: { errors },
@@ -22,16 +23,28 @@ export const useSetting = () => {
     );
   };
 
-  const onSubmit = (data: IFormInputs) => {
-    if (data.numberPlayers == data.nameCard.length){
-      console.log(data);
-      reset();
-    }else{
-      alert("Кількість гравців має бути рівним обраним ролям")
-    }
-    
-   
+  const hendlvalue = (e: any) => {
+    setNumberPlayers(e.target.value);
   };
 
-  return { handleSubmit, register, onSubmit, errors, handleChange, personName };
+  const onSubmit = (data: IFormInputs) => {
+    if (data.numberPlayers == data.nameCard.length) {
+      console.log(data);
+      alert("Готово!");
+      reset();
+    } else {
+      alert("Кількість гравців має бути рівним обраним ролям");
+    }
+  };
+
+  return {
+    handleSubmit,
+    register,
+    onSubmit,
+    errors,
+    handleChange,
+    personName,
+    numberPlayers,
+    hendlvalue,
+  };
 };

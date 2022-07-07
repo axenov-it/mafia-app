@@ -23,7 +23,8 @@ const MenuProps = {
   },
 };
 
-export const SettingForm = ({ children }: any) => {
+export const SettingForm = () => {
+
   const {
     handleSubmit,
     onSubmit,
@@ -31,6 +32,8 @@ export const SettingForm = ({ children }: any) => {
     errors,
     handleChange,
     personName,
+    hendlvalue,
+    numberPlayers,
   } = useSetting();
 
   return (
@@ -60,13 +63,14 @@ export const SettingForm = ({ children }: any) => {
               font-weight: bold;
             `}
           >
-            Гравців / Ролей 12/8
+            Гравців / Ролей {personName.length}/{numberPlayers}
           </p>
           <TextField
             {...register("numberPlayers", {
               required: "Поле обов'язково до заповнення",
               pattern: { value: /^[0-9]{0,2}$/, message: "Не больше 2 цыфр " },
             })}
+            onChange={hendlvalue}
             label={"Кількість гравців"}
             id="margin-none"
           />
@@ -84,7 +88,9 @@ export const SettingForm = ({ children }: any) => {
         </p>
         <div>
           <FormControl sx={{ mb: 3, width: "100%" }}>
-            <InputLabel id="demo-multiple-checkbox-label">Tag</InputLabel>
+            <InputLabel id="demo-multiple-checkbox-label">
+              Оберіть ролі
+            </InputLabel>
             <Select
               {...register("nameCard")}
               labelId="demo-multiple-checkbox-label"
@@ -92,7 +98,7 @@ export const SettingForm = ({ children }: any) => {
               multiple
               value={personName}
               onChange={handleChange}
-              input={<OutlinedInput label="Tag" />}
+              input={<OutlinedInput label="Оберіть ролі" />}
               renderValue={(selected) => selected.join(", ")}
               MenuProps={MenuProps}
             >
