@@ -1,5 +1,5 @@
 export interface IFormInputs {
-    numberPlayers: string;
-    nameCard: string;
+    numberPlayers: number;
+    nameCard:[];
   }
   

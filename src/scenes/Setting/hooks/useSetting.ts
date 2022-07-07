@@ -23,8 +23,14 @@ export const useSetting = () => {
   };
 
   const onSubmit = (data: IFormInputs) => {
-    console.log(data);
-    reset();
+    if (data.numberPlayers == data.nameCard.length){
+      console.log(data);
+      reset();
+    }else{
+      alert("Кількість гравців має бути рівним обраним ролям")
+    }
+    
+   
   };
 
   return { handleSubmit, register, onSubmit, errors, handleChange, personName };

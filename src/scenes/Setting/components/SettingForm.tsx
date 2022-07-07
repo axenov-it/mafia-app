@@ -65,7 +65,7 @@ export const SettingForm = ({ children }: any) => {
           <TextField
             {...register("numberPlayers", {
               required: "Поле обов'язково до заповнення",
-              pattern: { value: /^[0-9]{2}$/, message: "Не больше 2 цыфр " },
+              pattern: { value: /^[0-9]{0,2}$/, message: "Не больше 2 цыфр " },
             })}
             label={"Кількість гравців"}
             id="margin-none"
