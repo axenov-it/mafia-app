@@ -1,15 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../store";
+import { RoleInterface } from "common/interfaces";
 
 // Define a type for the slice state
 interface SettingState {
-  settings: any[];
+  countGamers: number;
+  roles: RoleInterface[];
 }
 
 // Define the initial state using that type
 const initialState: SettingState = {
-  settings: [],
+  countGamers: 0,
+  roles: [],
 };
 
 export const settingSlice = createSlice({
@@ -17,8 +20,12 @@ export const settingSlice = createSlice({
   // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
-    setSetting: (state, action: PayloadAction<string[]>) => {
-      state.settings.push({ ...action.payload });
+    setSetting: (
+      state,
+      action: PayloadAction<{ roles: RoleInterface[]; countGamers: number }>
+    ) => {
+      state.roles = action.payload.roles;
+      state.countGamers = action.payload.countGamers;
     },
   },
 });
@@ -26,6 +33,6 @@ export const settingSlice = createSlice({
 export const { setSetting } = settingSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
-export const selectSetting = (state: RootState) => state.settings.settings;
+export const selectSetting = (state: RootState) => state.settings;
 
 export const settingReducer = settingSlice.reducer;

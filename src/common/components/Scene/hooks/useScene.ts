@@ -1,8 +1,8 @@
-import { sceneTypes, StepInterface } from "common/interfaces";
+import { SceneTypes, StepInterface } from "common/interfaces";
 import { useSelector, selectStep } from "redux-store";
 import { Acquaintance, Meeting, Setting } from "scenes";
 
-const Scenes: Record<sceneTypes, () => JSX.Element> = {
+const Scenes: Record<SceneTypes, () => JSX.Element> = {
   acquaintance: Acquaintance,
   meeting: Meeting,
   cards: Acquaintance,

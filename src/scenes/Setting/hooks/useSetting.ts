@@ -1,11 +1,13 @@
-import * as React from "react";
 import { useForm } from "react-hook-form";
 import { IFormInputs } from "../interfaces";
 import { SelectChangeEvent } from "@mui/material/Select";
+import { useState } from "react";
+import initialRoles from "mocks/roles.json";
 
 export const useSetting = () => {
-  const [personName, setPersonName] = React.useState<string[]>([]);
-  const [numberPlayers, setNumberPlayers] = React.useState(0);
+  const [roleIds, setRoleIds] = useState<number[]>([]);
+  const [numberGamers, setNumberGamers] = useState(0);
+
   const {
     register,
     formState: { errors },
@@ -13,28 +15,33 @@ export const useSetting = () => {
     reset,
   } = useForm<IFormInputs>({ mode: "onBlur" });
 
-  const handleChange = (event: SelectChangeEvent<typeof personName>) => {
+  const onRoleChange = (event: SelectChangeEvent<typeof roleIds>) => {
     const {
       target: { value },
     } = event;
-    setPersonName(
-      // On autofill we get a stringified value.
-      typeof value === "string" ? value.split(",") : value
-    );
+
+    if (typeof value === "string") return;
+
+    setRoleIds(value);
   };
 
-  const hendlvalue = (e: any) => {
-    setNumberPlayers(e.target.value);
+  const onChageNumberGamers = (e: any) => {
+    setNumberGamers(e.target.value);
   };
 
   const onSubmit = (data: IFormInputs) => {
-    if (data.numberPlayers == data.nameCard.length) {
-      console.log(data);
-      alert("Готово!");
-      reset();
-    } else {
-      alert("Кількість гравців має бути рівним обраним ролям");
+    if (Number(data.numberGamers) !== data.roles.length) {
+      return alert("Its not good !!!");
     }
+
+    const roles = data.roles.map((roleId) =>
+      initialRoles.find((role) => role.id === roleId)
+    );
+
+    console.log(roles);
+
+    alert("Готово!");
+    reset();
   };
 
   return {
@@ -42,9 +49,9 @@ export const useSetting = () => {
     register,
     onSubmit,
     errors,
-    handleChange,
-    personName,
-    numberPlayers,
-    hendlvalue,
+    onRoleChange,
+    roleIds,
+    numberGamers,
+    onChageNumberGamers,
   };
 };

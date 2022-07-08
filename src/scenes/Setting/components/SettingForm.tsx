@@ -2,7 +2,7 @@
 import { css } from "@emotion/react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { useSetting } from "../hooks/useSetting";
+import { useSetting, useFields } from "../hooks";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -10,10 +10,13 @@ import FormControl from "@mui/material/FormControl";
 import ListItemText from "@mui/material/ListItemText";
 import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
-import roles from "../../../mocks/roles.json";
+import roles from "mocks/roles.json";
+import { Box } from "@mui/system";
+import { Chip } from "@mui/material";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
+
 const MenuProps = {
   PaperProps: {
     style: {
@@ -24,97 +27,91 @@ const MenuProps = {
 };
 
 export const SettingForm = () => {
-
   const {
     handleSubmit,
     onSubmit,
     register,
     errors,
-    handleChange,
-    personName,
-    hendlvalue,
-    numberPlayers,
+    onRoleChange,
+    roleIds,
+    onChageNumberGamers,
+    numberGamers,
   } = useSetting();
 
+  const fields = useFields(register);
+
   return (
-    <div>
-      <h2
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div
         css={css`
-          font-size: 30px;
-          font-weight: bold;
+          width: 600px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-direction: row-reverse;
+          flex: star;
         `}
       >
-        Settings scene
-      </h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div
-          css={css`
-            width: 600px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-direction: row-reverse;
-            flex: star;
-          `}
-        >
-          <p
-            css={css`
-              font-size: 20px;
-              font-weight: bold;
-            `}
-          >
-            Гравців / Ролей {personName.length}/{numberPlayers}
-          </p>
-          <TextField
-            {...register("numberPlayers", {
-              required: "Поле обов'язково до заповнення",
-              pattern: { value: /^[0-9]{0,2}$/, message: "Не больше 2 цыфр " },
-            })}
-            onChange={hendlvalue}
-            label={"Кількість гравців"}
-            id="margin-none"
-          />
-        </div>
         <p
           css={css`
-            margin: 0px;
-            height: 30px;
-            color: red;
-            line-height: 20px;
-            text-decoration: underline;
+            font-size: 20px;
+            font-weight: bold;
           `}
         >
-          {errors.numberPlayers?.message}
+          Гравців / Ролей {roleIds.length}/{numberGamers}
         </p>
-        <div>
-          <FormControl sx={{ mb: 3, width: "100%" }}>
-            <InputLabel id="demo-multiple-checkbox-label">
-              Оберіть ролі
-            </InputLabel>
-            <Select
-              {...register("nameCard")}
-              labelId="demo-multiple-checkbox-label"
-              id="demo-multiple-checkbox"
-              multiple
-              value={personName}
-              onChange={handleChange}
-              input={<OutlinedInput label="Оберіть ролі" />}
-              renderValue={(selected) => selected.join(", ")}
-              MenuProps={MenuProps}
-            >
-              {roles.map((name) => (
-                <MenuItem key={name.id} value={name.name}>
-                  <Checkbox checked={personName.indexOf(name.name) > -1} />
-                  <ListItemText primary={name.name} />
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </div>
-        <Button type="submit" variant="outlined">
-          Зберегти
-        </Button>
-      </form>
-    </div>
+        <TextField
+          {...fields.numberGamers}
+          onChange={onChageNumberGamers}
+          label={"Кількість гравців"}
+          id="margin-none"
+        />
+      </div>
+      <p
+        css={css`
+          margin: 0px;
+          height: 30px;
+          color: red;
+          line-height: 20px;
+          text-decoration: underline;
+        `}
+      >
+        {errors.numberGamers?.message}
+      </p>
+      <div>
+        <FormControl sx={{ mb: 3, width: "100%" }}>
+          <InputLabel id="input-role-label">Оберіть ролі</InputLabel>
+          <Select
+            {...register("roles")}
+            labelId="input-role-label"
+            multiple
+            value={roleIds}
+            onChange={onRoleChange}
+            input={<OutlinedInput label="Оберіть ролі" />}
+            renderValue={(selected) => (
+              <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
+                {selected.map((roleId) => (
+                  <Chip
+                    key={roleId}
+                    label={roles.find((role) => role.id === roleId)?.name}
+                  />
+                ))}
+              </Box>
+            )}
+            MenuProps={MenuProps}
+          >
+            {roles.map(({ id, name }) => (
+              <MenuItem key={id} value={id}>
+                <Checkbox checked={roleIds.indexOf(id) > -1} />
+                <ListItemText primary={name} />
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      </div>
+      <Button type="submit" variant="outlined">
+        Зберегти
+      </Button>
+    </form>
   );
 };

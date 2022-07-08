@@ -1,5 +1,4 @@
 export interface IFormInputs {
-    numberPlayers: number;
-    nameCard:[];
-  }
-  
+  numberGamers: number;
+  roles: number[];
+}

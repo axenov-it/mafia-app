@@ -1,10 +1,10 @@
 import { GamerInterface } from "../interfaces";
 
 export const useGamers = () => {
-  const numberPlayers = 14;
+  const numberGamers = 14;
   const gamers: GamerInterface[] = [];
 
-  for (let i = 0; i < numberPlayers; i++) {
+  for (let i = 0; i < numberGamers; i++) {
     gamers.push({ id: i + 1, isActiv: i === 1 });
   }
 
