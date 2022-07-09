@@ -13,6 +13,7 @@ import Checkbox from "@mui/material/Checkbox";
 import roles from "mocks/roles.json";
 import { Box } from "@mui/system";
 import { Chip } from "@mui/material";
+import { CounterRoles } from "./CounterRoles";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -36,6 +37,7 @@ export const SettingForm = () => {
     roleIds,
     onChageNumberGamers,
     numberGamers,
+    hideSelect,
   } = useSetting();
 
   const fields = useFields(register);
@@ -44,22 +46,27 @@ export const SettingForm = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <div
         css={css`
-          width: 600px;
           display: flex;
           justify-content: space-between;
           align-items: center;
           flex-direction: row-reverse;
           flex: star;
+          @media (max-width: 390px) {
+            flex-direction: column;
+            align-items: flex-start;
+          }
         `}
       >
-        <p
+        <div
           css={css`
-            font-size: 20px;
-            font-weight: bold;
+            @media (max-width: 390px) {
+              margin-bottom: 30px;
+            }
           `}
         >
-          Гравців / Ролей {roleIds.length}/{numberGamers}
-        </p>
+          <CounterRoles numberGamers={numberGamers} roleIds={roleIds.length} />
+        </div>
+
         <TextField
           {...fields.numberGamers}
           onChange={onChageNumberGamers}
@@ -79,35 +86,37 @@ export const SettingForm = () => {
         {errors.numberGamers?.message}
       </p>
       <div>
-        <FormControl sx={{ mb: 3, width: "100%" }}>
-          <InputLabel id="input-role-label">Оберіть ролі</InputLabel>
-          <Select
-            {...register("roles")}
-            labelId="input-role-label"
-            multiple
-            value={roleIds}
-            onChange={onRoleChange}
-            input={<OutlinedInput label="Оберіть ролі" />}
-            renderValue={(selected) => (
-              <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
-                {selected.map((roleId) => (
-                  <Chip
-                    key={roleId}
-                    label={roles.find((role) => role.id === roleId)?.name}
-                  />
-                ))}
-              </Box>
-            )}
-            MenuProps={MenuProps}
-          >
-            {roles.map(({ id, name }) => (
-              <MenuItem key={id} value={id}>
-                <Checkbox checked={roleIds.indexOf(id) > -1} />
-                <ListItemText primary={name} />
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
+        {hideSelect && (
+          <FormControl sx={{ mb: 3, width: "100%" }}>
+            <InputLabel id="input-role-label">Оберіть ролі</InputLabel>
+            <Select
+              {...register("roles")}
+              labelId="input-role-label"
+              multiple
+              value={roleIds}
+              onChange={onRoleChange}
+              input={<OutlinedInput label="Оберіть ролі" />}
+              renderValue={(selected) => (
+                <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
+                  {selected.map((roleId) => (
+                    <Chip
+                      key={roleId}
+                      label={roles.find((role) => role.id === roleId)?.name}
+                    />
+                  ))}
+                </Box>
+              )}
+              MenuProps={MenuProps}
+            >
+              {roles.map(({ id, name }) => (
+                <MenuItem key={id} value={id}>
+                  <Checkbox checked={roleIds.indexOf(id) > -1} />
+                  <ListItemText primary={name} />
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        )}
       </div>
       <Button type="submit" variant="outlined">
         Зберегти
