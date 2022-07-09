@@ -10,6 +10,7 @@ export const useSetting = () => {
   const [roleIds, setRoleIds] = useState<number[]>([]);
   const [numberGamers, setNumberGamers] = useState<number>(0);
   const [hideSelect, setHideSelect] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const dispatch = useDispatch();
 
@@ -34,6 +35,9 @@ export const useSetting = () => {
     setNumberGamers(e.target.value);
     if (e.target.value) {
       setHideSelect(true);
+      setTimeout(() => {
+        setIsOpen(true);
+      });
     }
   };
 
@@ -62,5 +66,6 @@ export const useSetting = () => {
     numberGamers,
     onChageNumberGamers,
     hideSelect,
+    isOpen,
   };
 };

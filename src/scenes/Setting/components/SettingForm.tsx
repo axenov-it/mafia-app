@@ -38,6 +38,7 @@ export const SettingForm = () => {
     onChageNumberGamers,
     numberGamers,
     hideSelect,
+    isOpen,
   } = useSetting();
 
   const fields = useFields(register);
@@ -87,7 +88,24 @@ export const SettingForm = () => {
       </p>
       <div>
         {hideSelect && (
-          <FormControl sx={{ mb: 3, width: "100%" }}>
+          <FormControl
+            sx={{ mb: 3, width: "100%" }}
+            css={css`
+              animation-duration: 0.5s;
+              animation-name: ${isOpen ? "slidein" : null};
+              @keyframes slidein {
+                from {
+                  transform: translateY(100%);
+                  opacity: 0;
+                }
+
+                to {
+                  transform: translateY(0%);
+                  opacity: 1;
+                }
+              }
+            `}
+          >
             <InputLabel id="input-role-label">Оберіть ролі</InputLabel>
             <Select
               {...register("roles")}
