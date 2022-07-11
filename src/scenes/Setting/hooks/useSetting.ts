@@ -1,48 +1,14 @@
-import { useForm } from "react-hook-form";
-import { IFormInputs } from "../interfaces";
-import { SelectChangeEvent } from "@mui/material/Select";
-import { useState } from "react";
 import initialRoles from "mocks/roles.json";
 import { setSetting } from "../../../redux-store/slices/settings";
 import { useDispatch } from "../../../redux-store/hooks";
 
 export const useSetting = () => {
-  const [roleIds, setRoleIds] = useState<number[]>([]);
-  const [numberGamers, setNumberGamers] = useState<number>(0);
-  const [hideSelect, setHideSelect] = useState<boolean>(false);
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-
   const dispatch = useDispatch();
 
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-    reset,
-  } = useForm<IFormInputs>({ mode: "onBlur" });
+  const onSubmit = (data: { countGamers: string; roles: number[] }) => {
+    const countGamersValue = Number(data.countGamers);
 
-  const onRoleChange = (event: SelectChangeEvent<typeof roleIds>) => {
-    const {
-      target: { value },
-    } = event;
-
-    if (typeof value === "string") return;
-
-    setRoleIds(value);
-  };
-
-  const onChageNumberGamers = (e: any) => {
-    setNumberGamers(e.target.value);
-    if (e.target.value) {
-      setHideSelect(true);
-      setTimeout(() => {
-        setIsOpen(true);
-      });
-    }
-  };
-
-  const onSubmit = (data: IFormInputs) => {
-    if (Number(data.numberGamers) !== data.roles.length) {
+    if (countGamersValue !== data.roles.length) {
       return alert("Кількість ролей повинна бути рівна кількості гравців");
     }
 
@@ -50,22 +16,12 @@ export const useSetting = () => {
       initialRoles.find((role) => role.id === roleId)
     );
 
-    dispatch(setSetting({ countGamers: numberGamers, roles: roles }));
+    dispatch(setSetting({ countGamers: countGamersValue, roles: roles }));
 
     alert("Готово!");
-    reset();
   };
 
   return {
-    handleSubmit,
-    register,
     onSubmit,
-    errors,
-    onRoleChange,
-    roleIds,
-    numberGamers,
-    onChageNumberGamers,
-    hideSelect,
-    isOpen,
   };
 };

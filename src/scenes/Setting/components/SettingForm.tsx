@@ -2,49 +2,25 @@
 import { css } from "@emotion/react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { useSetting, useFields } from "../hooks";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import ListItemText from "@mui/material/ListItemText";
-import Select from "@mui/material/Select";
-import Checkbox from "@mui/material/Checkbox";
-import roles from "mocks/roles.json";
-import { Box } from "@mui/system";
-import { Chip } from "@mui/material";
+import { useForm } from "../hooks/useForm";
+import { SettingRolesSelect } from "./SettingRolesSelect";
 import { CounterRoles } from "./CounterRoles";
 
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
+interface Props {
+  onSubmit: (data: any) => void;
+}
 
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-};
-
-export const SettingForm = () => {
-  const {
-    handleSubmit,
+export const SettingForm = ({ onSubmit }: Props) => {
+  const { errors, values, touched, handleChange, handleSubmit } = useForm({
     onSubmit,
-    register,
-    errors,
-    onRoleChange,
-    roleIds,
-    onChageNumberGamers,
-    numberGamers,
-    hideSelect,
-    isOpen,
-  } = useSetting();
-
-  const fields = useFields(register);
+  });
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit}>
+      <CounterRoles
+        numberGamers={Number(values.countGamers)}
+        numberRoles={values.roles.length}
+      />
       <div
         css={css`
           display: flex;
@@ -58,83 +34,27 @@ export const SettingForm = () => {
           }
         `}
       >
-        <div
-          css={css`
-            @media (max-width: 390px) {
-              margin-bottom: 30px;
-            }
-          `}
-        >
-          <CounterRoles numberGamers={numberGamers} roleIds={roleIds.length} />
-        </div>
-
         <TextField
-          {...fields.numberGamers}
-          onChange={onChageNumberGamers}
+          autoComplete="off"
+          fullWidth
+          sx={{ mb: "15px" }}
+          name="countGamers"
+          onChange={handleChange}
           label={"Кількість гравців"}
-          id="margin-none"
+          value={values.countGamers}
+          error={touched.countGamers && Boolean(errors.countGamers)}
+          helperText={touched.countGamers && errors.countGamers}
         />
       </div>
-      <p
-        css={css`
-          margin: 0px;
-          height: 30px;
-          color: red;
-          line-height: 20px;
-          text-decoration: underline;
-        `}
-      >
-        {errors.numberGamers?.message}
-      </p>
-      <div>
-        {hideSelect && (
-          <FormControl
-            sx={{ mb: 3, width: "100%" }}
-            css={css`
-              animation-duration: 0.5s;
-              animation-name: ${isOpen ? "slidein" : null};
-              @keyframes slidein {
-                from {
-                  transform: translateY(100%);
-                  opacity: 0;
-                }
 
-                to {
-                  transform: translateY(0%);
-                  opacity: 1;
-                }
-              }
-            `}
-          >
-            <InputLabel id="input-role-label">Оберіть ролі</InputLabel>
-            <Select
-              {...register("roles")}
-              labelId="input-role-label"
-              multiple
-              value={roleIds}
-              onChange={onRoleChange}
-              input={<OutlinedInput label="Оберіть ролі" />}
-              renderValue={(selected) => (
-                <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
-                  {selected.map((roleId) => (
-                    <Chip
-                      key={roleId}
-                      label={roles.find((role) => role.id === roleId)?.name}
-                    />
-                  ))}
-                </Box>
-              )}
-              MenuProps={MenuProps}
-            >
-              {roles.map(({ id, name }) => (
-                <MenuItem key={id} value={id}>
-                  <Checkbox checked={roleIds.indexOf(id) > -1} />
-                  <ListItemText primary={name} />
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        )}
+      <div>
+        <SettingRolesSelect
+          isOpen={!!values.countGamers}
+          onChange={handleChange}
+          value={values.roles}
+          error={touched.roles && Boolean(errors.roles)}
+          helperText={touched.roles && errors.roles}
+        />
       </div>
       <Button type="submit" variant="outlined">
         Зберегти
