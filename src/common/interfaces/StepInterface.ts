@@ -1,14 +1,8 @@
-export type sceneTypes =
-  | "acquaintance"
-  | "cards"
-  | "meeting"
-  | "roulette"
-  | "voting";
-
+import { SceneTypes } from "./types";
 export interface StepInterface {
   isActive: boolean;
   type: string;
-  scene: sceneTypes;
+  scene: SceneTypes;
   isRepeat: boolean;
   isRequired: boolean;
   isUsed: boolean;
