@@ -4,6 +4,8 @@ export type SceneTypes =
   | "meeting"
   | "roulette"
   | "setting"
-  | "voting";
+  | "roleset"
+  | "voting"
+  | string;
 
-export type RoleTypes = "city" | "nigth" | "self";
+export type RoleTypes = "city" | "nigth" | "self" | string;

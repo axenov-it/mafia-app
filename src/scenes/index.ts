@@ -4,3 +4,4 @@ export * from "./Meeting";
 export * from "./Roulette";
 export * from "./Voting";
 export * from "./Setting";
+export * from "./RoleSet";

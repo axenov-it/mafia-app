@@ -1,1 +1,2 @@
-export const commonHook = "";
+export * from "./useSettingsRoles";
+export * from "./useSettingsGamers";
