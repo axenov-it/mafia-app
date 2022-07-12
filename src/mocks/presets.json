@@ -1,0 +1,116 @@
+[
+  {
+    "id": 1,
+    "type": 6,
+    "presets": [
+      {
+        "id": 1,
+        "name": "Легкая игра",
+        "roles": ["godfather", "mafiosi", "sheriff", "peaceful", "peaceful"]
+      },
+      {
+        "id": 2,
+        "name": "Сильный город",
+        "roles": ["godfather", "sheriff", "peaceful", "peaceful", "peaceful"]
+      },
+      {
+        "id": 3,
+        "name": "Город без шерифа",
+        "roles": ["godfather", "peaceful", "peaceful", "peaceful", "peaceful"]
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "type": 7,
+    "presets": [
+      {
+        "id": 1,
+        "name": "Для новичков",
+        "roles": [
+          "godfather",
+          "mafiosi",
+          "sheriff",
+          "peaceful",
+          "peaceful",
+          "peaceful",
+          "peaceful"
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Тупо играем",
+        "roles": [
+          "godfather",
+          "sheriff",
+          "peaceful",
+          "peaceful",
+          "peaceful",
+          "peaceful",
+          "doctor"
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Город без шерифа",
+        "roles": [
+          "godfather",
+          "mafiosi",
+          "peaceful",
+          "peaceful",
+          "peaceful",
+          "doctor",
+          "peaceful"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "type": 8,
+    "presets": [
+      {
+        "id": 1,
+        "name": "Мясо",
+        "roles": [
+          "godfather",
+          "mafiosi",
+          "sheriff",
+          "maniac",
+          "peaceful",
+          "peaceful",
+          "peaceful",
+          "doctor"
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Шериф разрывает",
+        "roles": [
+          "godfather",
+          "mafiosi",
+          "sheriff",
+          "maniac",
+          "peaceful",
+          "peaceful",
+          "peaceful",
+          "doctor"
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Город спит",
+        "roles": [
+          "godfather",
+          "mafiosi",
+          "sheriff",
+          "maniac",
+          "peaceful",
+          "peaceful",
+          "peaceful",
+          "doctor"
+        ]
+      }
+    ]
+  }
+]

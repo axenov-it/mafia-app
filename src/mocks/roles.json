@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": "beauty",
     "type": "city",
     "name": "Красуня",
     "priority": 1,
@@ -10,7 +10,7 @@
     "abilities": ["immortalBlock"]
   },
   {
-    "id": 2,
+    "id": "scrounger",
     "type": "mafia",
     "name": "Крадій",
     "isActiveNight": true,
@@ -20,7 +20,7 @@
     "abilities": ["block"]
   },
   {
-    "id": 3,
+    "id": "doctor",
     "name": "Лікарка",
     "type": "city",
     "isActiveNight": true,
@@ -30,7 +30,7 @@
     "abilities": ["healing"]
   },
   {
-    "id": 4,
+    "id": "godfather",
     "name": "Хрещений батько",
     "type": "mafia",
     "isActiveNight": true,
@@ -40,7 +40,7 @@
     "abilities": ["collectiveMafiaKilling"]
   },
   {
-    "id": 5,
+    "id": "mafiosi",
     "name": "Мафіозі",
     "type": "mafia",
     "isActiveNight": true,
@@ -50,17 +50,7 @@
     "abilities": ["collectiveMafiaKilling"]
   },
   {
-    "id": 6,
-    "name": "Мафіозі",
-    "type": "mafia",
-    "isActiveNight": true,
-    "isDisabled": false,
-    "priority": 5,
-    "desctiption": "Грає за мафію",
-    "abilities": ["collectiveMafiaKilling"]
-  },
-  {
-    "id": 7,
+    "id": "lawyer",
     "name": "Адвокат",
     "type": "city",
     "isActiveNight": true,
@@ -70,7 +60,7 @@
     "abilities": ["checkRole"]
   },
   {
-    "id": 8,
+    "id": "sheriff",
     "name": "Шериф",
     "type": "city",
     "isActiveNight": true,
@@ -80,7 +70,7 @@
     "abilities": ["checkPersonTeam", "killing"]
   },
   {
-    "id": 9,
+    "id": "maniac",
     "name": "Маніяк",
     "type": "self",
     "isActiveNight": true,
@@ -90,7 +80,7 @@
     "abilities": ["killing"]
   },
   {
-    "id": 10,
+    "id": "detective",
     "name": "Детектив",
     "type": "city",
     "isActiveNight": true,
@@ -100,7 +90,7 @@
     "abilities": ["сomparePersonsTeam"]
   },
   {
-    "id": 11,
+    "id": "admirer",
     "name": "Шанувальниця",
     "type": "city",
     "isActiveNight": true,
@@ -110,27 +100,7 @@
     "abilities": ["checkSheriffRole"]
   },
   {
-    "id": 12,
-    "name": "Мирний мешканець",
-    "type": "city",
-    "isActiveNight": false,
-    "isDisabled": false,
-    "priority": 20,
-    "desctiption": "Грає за мирних",
-    "abilities": []
-  },
-  {
-    "id": 13,
-    "name": "Мирний мешканець",
-    "type": "city",
-    "isActiveNight": false,
-    "isDisabled": false,
-    "priority": 20,
-    "desctiption": "Грає за мирних",
-    "abilities": []
-  },
-  {
-    "id": 14,
+    "id": "peaceful",
     "name": "Мирний мешканець",
     "type": "city",
     "isActiveNight": false,
