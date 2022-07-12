@@ -5,7 +5,7 @@ import { useDispatch } from "../../../redux-store/hooks";
 export const useSetting = () => {
   const dispatch = useDispatch();
 
-  const onSubmit = (data: { countGamers: string; roles: number[] }) => {
+  const onSubmit = (data: { countGamers: string; roles: string[] }) => {
     const countGamersValue = Number(data.countGamers);
 
     if (countGamersValue !== data.roles.length) {
@@ -16,7 +16,7 @@ export const useSetting = () => {
       initialRoles.find((role) => role.id === roleId)
     );
 
-    dispatch(setSetting({ countGamers: countGamersValue, roles: roles }));
+    // dispatch(setSetting({ countGamers: countGamersValue, roles: roles }));
 
     alert("Готово!");
   };

@@ -6,17 +6,38 @@
       {
         "id": 1,
         "name": "Легкая игра",
-        "roles": ["godfather", "mafiosi", "sheriff", "peaceful", "peaceful"]
+        "roles": [
+          "doctor",
+          "godfather",
+          "mafiosi",
+          "sheriff",
+          "peaceful",
+          "peaceful"
+        ]
       },
       {
         "id": 2,
         "name": "Сильный город",
-        "roles": ["godfather", "sheriff", "peaceful", "peaceful", "peaceful"]
+        "roles": [
+          "doctor",
+          "godfather",
+          "sheriff",
+          "peaceful",
+          "peaceful",
+          "peaceful"
+        ]
       },
       {
         "id": 3,
         "name": "Город без шерифа",
-        "roles": ["godfather", "peaceful", "peaceful", "peaceful", "peaceful"]
+        "roles": [
+          "doctor",
+          "godfather",
+          "peaceful",
+          "peaceful",
+          "peaceful",
+          "peaceful"
+        ]
       }
     ]
   },

@@ -1,10 +1,10 @@
-import { useSettingsGamers, useSettingsRoles } from "common/hooks";
+import { useSettingsGamers, useSettingsPreset } from "common/hooks";
 
 export const RoleSet = () => {
-  const roles = useSettingsRoles();
+  const preset = useSettingsPreset();
   const gamers = useSettingsGamers();
 
-  console.log(roles, gamers);
+  console.log(preset, gamers);
 
   return <h2>RoleSet</h2>;
 };

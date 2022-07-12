@@ -2,7 +2,7 @@ import { Box, Chip } from "@mui/material";
 import roles from "mocks/roles.json";
 
 interface Props {
-  selected: number[];
+  selected: string[];
 }
 
 export const SettingRolesChip = ({ selected }: Props) => (

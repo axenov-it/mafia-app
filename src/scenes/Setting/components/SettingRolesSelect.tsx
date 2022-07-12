@@ -25,7 +25,7 @@ const MenuProps = {
 
 interface Props {
   onChange: (data: any) => void;
-  value: number[];
+  value: string[];
   helperText: any;
   isOpen: boolean;
   error: any;
