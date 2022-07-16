@@ -1,26 +1,37 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { useForm } from "../hooks/useForm";
-import { SettingRolesSelect } from "./SettingRolesSelect";
-import { CounterRoles } from "./CounterRoles";
+import { useEffect } from "react";
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import { PresetInterface } from "common/interfaces";
 
 interface Props {
   onSubmit: (data: any) => void;
+  onPresetChange: (presetId: number) => void;
+  onCountGamersChange: (count: number) => void;
+  gamerItems: number[];
+  presets: PresetInterface[];
 }
 
-export const SettingForm = ({ onSubmit }: Props) => {
+export const SettingForm = ({ onSubmit, onCountGamersChange, onPresetChange, gamerItems, presets }: Props) => {
   const { errors, values, touched, handleChange, handleSubmit } = useForm({
-    onSubmit,
+    onSubmit
   });
+
+  useEffect(() => {
+    onCountGamersChange(Number(values.countGamers))
+  }, [values.countGamers])
+
+  useEffect(() => {
+    onPresetChange(Number(values.preset))
+  }, [values.preset])
 
   return (
     <form onSubmit={handleSubmit}>
-      <CounterRoles
-        numberGamers={Number(values.countGamers)}
-        numberRoles={values.roles.length}
-      />
       <div
         css={css`
           display: flex;
@@ -34,31 +45,38 @@ export const SettingForm = ({ onSubmit }: Props) => {
           }
         `}
       >
-        <TextField
-          autoComplete="off"
-          fullWidth
-          sx={{ mb: "15px" }}
-          name="countGamers"
-          onChange={handleChange}
-          label={"Кількість гравців"}
-          value={values.countGamers}
-          error={touched.countGamers && Boolean(errors.countGamers)}
-          helperText={touched.countGamers && errors.countGamers}
-        />
+        <FormControl fullWidth>
+          <InputLabel>Кількість</InputLabel>
+          <Select
+            name="countGamers"
+            value={values.countGamers}
+            label="кількість"
+            onChange={handleChange}
+          >
+            {gamerItems.map((item) => <MenuItem key={item} value={item}>{item}</MenuItem>)}
+          </Select>
+        </FormControl>
+        {values.countGamers && <FormControl fullWidth>
+          <InputLabel>Оберіть гру</InputLabel>
+          <Select
+            name="preset"
+            value={values.preset}
+            label="Оберіть гру"
+            onChange={handleChange}
+          >
+            {presets.map((preset) => <MenuItem key={preset.id} value={preset.id}>{preset.name}</MenuItem>)}
+          </Select>
+        </FormControl>}
+
+
       </div>
 
       <div>
-        <SettingRolesSelect
-          isOpen={!!values.countGamers}
-          onChange={handleChange}
-          value={values.roles}
-          error={touched.roles && Boolean(errors.roles)}
-          helperText={touched.roles && errors.roles}
-        />
+
       </div>
       <Button type="submit" variant="outlined">
         Зберегти
       </Button>
-    </form>
+    </form >
   );
 };

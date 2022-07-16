@@ -1,10 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { SettingForm } from "./components";
+import { RolesList, SettingForm } from "./components";
 import { useSetting } from "./hooks";
 
 export const Setting = () => {
-  const { onSubmit } = useSetting();
+  const { onSubmit, onCountGamersChange, onPresetChange, gamerItems, presets, roles } = useSetting();
 
   return (
     <div
@@ -20,7 +20,15 @@ export const Setting = () => {
       >
         Встановлення конфігурації
       </h2>
-      <SettingForm onSubmit={onSubmit} />
+
+      <SettingForm
+        onSubmit={onSubmit}
+        onCountGamersChange={onCountGamersChange}
+        onPresetChange={onPresetChange}
+        gamerItems={gamerItems}
+        presets={presets} />
+
+      <RolesList roles={roles} />
     </div>
   );
 };

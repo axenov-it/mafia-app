@@ -1,27 +1,37 @@
-import initialRoles from "mocks/roles.json";
-import { setSetting } from "../../../redux-store/slices/settings";
-import { useDispatch } from "../../../redux-store/hooks";
+import presetTypes from "mocks/presets.json";
+import { setSetting } from "redux-store/slices/settings";
+import { useDispatch } from "redux-store/hooks";
+import { useState } from "react";
+
 
 export const useSetting = () => {
+  const [countGamers, setCountGamers] = useState(0)
+  const [presetId, setPresetId] = useState(0)
+
   const dispatch = useDispatch();
+  const gamerItems = presetTypes.map(({ type }) => type)
+  const presetType = presetTypes.find(({ type }) => type === countGamers)
+  const preset = presetType?.presets.find(({ id }) => id === presetId)
 
-  const onSubmit = (data: { countGamers: string; roles: string[] }) => {
-    const countGamersValue = Number(data.countGamers);
 
-    if (countGamersValue !== data.roles.length) {
-      return alert("Кількість ролей повинна бути рівна кількості гравців");
-    }
+  const onCountGamersChange = (count: number) => setCountGamers(count)
+  const onPresetChange = (presetId: number) => setPresetId(presetId)
 
-    const roles: any = data.roles.map((roleId) =>
-      initialRoles.find((role) => role.id === roleId)
-    );
 
-    // dispatch(setSetting({ countGamers: countGamersValue, roles: roles }));
+  const onSubmit = () => {
+    if (!countGamers || !preset) return;
+
+    dispatch(setSetting({ countGamers, preset }));
 
     alert("Готово!");
   };
 
   return {
     onSubmit,
+    onCountGamersChange,
+    onPresetChange,
+    gamerItems,
+    presets: presetType?.presets || [],
+    roles: preset?.roles || [],
   };
 };
