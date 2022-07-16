@@ -1,6 +1,6 @@
 import { SceneTypes, StepInterface } from "common/interfaces";
 import { useSelector, selectStep } from "redux-store";
-import { Acquaintance, Meeting, Setting, RoleSet } from "scenes";
+import { Acquaintance, Meeting, RoleSet,Settings } from "scenes";
 
 const Scenes: Record<SceneTypes, () => JSX.Element> = {
   acquaintance: Acquaintance,
@@ -8,8 +8,8 @@ const Scenes: Record<SceneTypes, () => JSX.Element> = {
   cards: Acquaintance,
   roulette: Acquaintance,
   voting: Acquaintance,
-  setting: Setting,
   roleset: RoleSet,
+  setting: Settings,
 };
 
 export const useScene = () => {
