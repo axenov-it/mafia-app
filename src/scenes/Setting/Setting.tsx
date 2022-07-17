@@ -4,7 +4,15 @@ import { RolesList, SettingForm } from "./components";
 import { useSetting } from "./hooks";
 
 export const Setting = () => {
-  const { onSubmit, onCountGamersChange, onPresetChange, gamerItems, presets, roles, countGamers } = useSetting();
+  const {
+    onSubmit,
+    onCountGamersChange,
+    onPresetChange,
+    gamerItems,
+    presets,
+    roles,
+    countGamers,
+  } = useSetting();
 
   return (
     <div
@@ -16,8 +24,8 @@ export const Setting = () => {
         css={css`
           font-size: 1.7em;
           font-weight: bold;
-          text-align:center;
-          margin-bottom:30px;
+          text-align: center;
+          margin-bottom: 30px;
         `}
       >
         Встановлення конфігурації
@@ -28,9 +36,10 @@ export const Setting = () => {
         onCountGamersChange={onCountGamersChange}
         onPresetChange={onPresetChange}
         gamerItems={gamerItems}
-        presets={presets} />
+        presets={presets}
+      />
 
-      {countGamers || "" ? < RolesList roles={roles} /> : ""}
+      {countGamers || "" ? <RolesList roles={roles} /> : ""}
     </div>
   );
 };
