@@ -13,10 +13,8 @@ export const useSetting = () => {
   const presetType = presetTypes.find(({ type }) => type === countGamers)
   const preset = presetType?.presets.find(({ id }) => id === presetId)
 
-
   const onCountGamersChange = (count: number) => setCountGamers(count)
   const onPresetChange = (presetId: number) => setPresetId(presetId)
-
 
   const onSubmit = () => {
     if (!countGamers || !preset) return;
@@ -33,5 +31,6 @@ export const useSetting = () => {
     gamerItems,
     presets: presetType?.presets || [],
     roles: preset?.roles || [],
+    countGamers,
   };
 };
