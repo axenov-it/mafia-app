@@ -12,9 +12,13 @@ const getFormatedTime = (min: number, sek: number) => {
   return `${sek}`;
 };
 
-export const useCooldown = (cooldown: number, format: "m" | "s" = "m") => {
+export const useCooldown = (
+  timer: { cooldownTime: number },
+  format: "m" | "s" = "m",
+  onFinishTimer: () => void
+) => {
   const sekCount = useRef(60);
-  const minCount = useRef(cooldown);
+  const minCount = useRef(timer.cooldownTime);
 
   const timeTikerRef: any = useRef();
 
@@ -41,15 +45,18 @@ export const useCooldown = (cooldown: number, format: "m" | "s" = "m") => {
       );
 
       if (sekCount.current === 0) {
+        onFinishTimer();
+        sekCount.current = 60;
+        minCount.current = timer.cooldownTime;
         clearInterval(addTimeSecond);
       }
-    }, 1000);
+    }, 200);
 
     return () => {
       clearInterval(addTimeSecond);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [timer]);
 
   return timeTikerRef;
 };

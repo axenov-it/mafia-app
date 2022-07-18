@@ -11,7 +11,7 @@ export const useSettingsGamers = () => {
   const gamers: GamerInterface[] = [];
 
   for (let i = 0; i < countGamers; i++) {
-    gamers.push({ id: i + 1, isActive: i === 1 });
+    gamers.push({ id: i + 1, isActive: false });
   }
 
   return gamers;

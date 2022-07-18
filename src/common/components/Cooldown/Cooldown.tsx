@@ -3,13 +3,19 @@ import { css } from "@emotion/react";
 import { useCooldown } from "./hooks";
 
 interface Props {
-  cooldownTime: number;
+  timer: { cooldownTime: number };
   format?: "m" | "s";
   className?: any;
+  onFinishTimer: () => void;
 }
 
-export const Cooldown = ({ className, cooldownTime, format }: Props) => {
-  const timeTikerRef = useCooldown(cooldownTime, format);
+export const Cooldown = ({
+  className,
+  format,
+  timer,
+  onFinishTimer,
+}: Props) => {
+  const timeTikerRef = useCooldown(timer, format, onFinishTimer);
 
   return (
     <div

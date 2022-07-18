@@ -1,11 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import Pagination from "@mui/material/Pagination";
-import { useGamers } from "../hooks/useGamers";
 
-export const GamerStepper = () => {
-  const { gamers } = useGamers();
+interface Props {
+  countGamers: number;
+  activeGamer: number;
+}
 
+export const GamerStepper = ({ countGamers, activeGamer }: Props) => {
   return (
     <div
       css={css`
@@ -25,10 +27,10 @@ export const GamerStepper = () => {
       <Pagination
         hideNextButton
         hidePrevButton
-        count={gamers.length}
+        count={countGamers}
         variant="outlined"
         shape="rounded"
-        page={1}
+        page={activeGamer}
         siblingCount={0}
       />
     </div>
