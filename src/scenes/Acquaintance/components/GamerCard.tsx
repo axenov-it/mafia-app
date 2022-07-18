@@ -10,7 +10,6 @@ export const GamerCard = ({ gamer }: Props) => (
     css={css`
       display: flex;
       position: relative;
-      margin-top: 15px;
       flex-direction: column;
       max-width: 350px;
     `}
@@ -22,7 +21,6 @@ export const GamerCard = ({ gamer }: Props) => (
 
         @media (max-width: 680px) {
           max-width: 200px;
-          margin-top: 25px;
         }
       `}
       src="./img/gamer.jpg"

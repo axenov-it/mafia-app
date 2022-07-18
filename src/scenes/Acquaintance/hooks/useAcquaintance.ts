@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 
 export const useAcquaintance = (
   onResetTimer: () => void,
-  runFinish: () => void
+  runStart: () => void
 ) => {
   const countGamers = useSettingsCountGamers();
   const gamerIndex = useRef(1);
@@ -18,7 +18,11 @@ export const useAcquaintance = (
       setActiveGamer(gamerIndex.current);
       onResetTimer();
     }
-    runFinish();
+  };
+
+  const onStart = () => {
+    isGamerStarted.current = true;
+    runStart();
   };
 
   const onFinishTimer = () => {
@@ -30,5 +34,6 @@ export const useAcquaintance = (
     activeGamer,
     onNextGamer,
     onFinishTimer,
+    onStart,
   };
 };

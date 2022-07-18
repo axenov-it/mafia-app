@@ -13,16 +13,20 @@ const getFormatedTime = (min: number, sek: number) => {
 };
 
 export const useCooldown = (
-  timer: { cooldownTime: number },
+  timer: { cooldownTime: number } | null,
   format: "m" | "s" = "m",
   onFinishTimer: () => void
 ) => {
-  const sekCount = useRef(60);
-  const minCount = useRef(timer.cooldownTime);
-
   const timeTikerRef: any = useRef();
+  const sekCount = useRef(60);
+  const minCount = useRef(0);
 
   useEffect(() => {
+    timeTikerRef.current.innerText = 0;
+    minCount.current = timer?.cooldownTime || 0;
+
+    if (!timer) return;
+
     timeTikerRef.current.innerText = getFormatedTime(
       minCount.current,
       sekCount.current

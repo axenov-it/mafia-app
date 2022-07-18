@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const useStart = () => {
+export const useStartScene = () => {
   const [isStart, setIsStart] = useState(false);
 
   return {

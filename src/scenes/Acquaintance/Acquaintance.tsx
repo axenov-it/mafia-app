@@ -1,17 +1,17 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { Title, Cooldown, useCooldownTimer } from "common/components";
-import { GamerCard, Navigation, Start } from "./components";
-import { useAcquaintance, useStart, useFinish } from "./hooks";
+import { useStartScene } from "common/hooks";
+import { GamerCard, Navigation } from "./components";
+import { useAcquaintance } from "./hooks";
 
 export const Acquaintance = () => {
-  const { timer, onResetTimer } = useCooldownTimer();
-  const { isStart, runStart } = useStart();
-  const { isFinish, runFinish } = useFinish();
+  const { isStart, runStart } = useStartScene();
+  const { timer, onResetTimer } = useCooldownTimer(1, isStart);
 
-  const { activeGamer, onNextGamer, onFinishTimer } = useAcquaintance(
+  const { activeGamer, onNextGamer, onFinishTimer, onStart } = useAcquaintance(
     onResetTimer,
-    runFinish
+    runStart
   );
 
   return (
@@ -19,6 +19,7 @@ export const Acquaintance = () => {
       <Title>Знайомство</Title>
       <Navigation
         isStart={isStart}
+        onStart={onStart}
         onNextGamer={onNextGamer}
         onResetTimer={onResetTimer}
       />
@@ -30,10 +31,8 @@ export const Acquaintance = () => {
           margin-top: 30px;
         `}
       >
-        <Start isStart={isStart} onStartGame={runStart} />
-
-        {isStart && <GamerCard gamer={activeGamer} />}
-        {isStart && <Cooldown timer={timer} onFinishTimer={onFinishTimer} />}
+        <GamerCard gamer={activeGamer} />
+        <Cooldown timer={timer} onFinishTimer={onFinishTimer} />
       </div>
     </div>
   );

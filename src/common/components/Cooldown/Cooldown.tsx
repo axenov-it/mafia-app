@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 import { useCooldown } from "./hooks";
 
 interface Props {
-  timer: { cooldownTime: number };
+  timer: { cooldownTime: number } | null;
   format?: "m" | "s";
   className?: any;
   onFinishTimer: () => void;

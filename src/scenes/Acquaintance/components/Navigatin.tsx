@@ -2,43 +2,61 @@
 import { css } from "@emotion/react";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
+import PlayCircleFilledIcon from "@mui/icons-material/PlayCircleFilled";
 import { Button } from "@mui/material";
 
 interface Props {
   isStart: boolean;
   onNextGamer: () => void;
   onResetTimer: () => void;
+  onStart: () => void;
 }
 
-export const Navigation = ({ isStart, onNextGamer, onResetTimer }: Props) =>
-  isStart ? (
-    <div
-      css={css`
-        display: flex;
-        position: relative;
-        margin-top: 30px;
-        align-items: center;
-        justify-content: center;
-        gap: 15px;
-      `}
-    >
+export const Navigation = ({
+  isStart,
+  onNextGamer,
+  onResetTimer,
+  onStart,
+}: Props) => (
+  <div
+    css={css`
+      display: flex;
+      position: relative;
+      margin-top: 30px;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+    `}
+  >
+    {isStart && (
+      <>
+        <Button
+          onClick={onResetTimer}
+          variant="outlined"
+          color="inherit"
+          startIcon={<RestartAltIcon />}
+        >
+          Ще хвилина
+        </Button>
+        <Button
+          onClick={onNextGamer}
+          variant="outlined"
+          color="inherit"
+          startIcon={<ArrowCircleRightIcon />}
+        >
+          Продовжити
+        </Button>
+      </>
+    )}
+    {!isStart && (
       <Button
-        onClick={onResetTimer}
+        onClick={onStart}
         variant="outlined"
         color="inherit"
-        startIcon={<RestartAltIcon />}
+        startIcon={<PlayCircleFilledIcon css={css``} />}
       >
-        Ще час
+        Почати Знайомство
       </Button>
-      <Button
-        onClick={onNextGamer}
-        variant="outlined"
-        color="inherit"
-        startIcon={<ArrowCircleRightIcon />}
-      >
-        Продовжити
-      </Button>
-    </div>
-  ) : (
-    <></>
-  );
+    )}
+  </div>
+);

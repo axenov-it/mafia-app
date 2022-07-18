@@ -11,7 +11,8 @@ export const Title = ({ children }: Props) => (
     css={css`
       text-align: center;
       border-bottom: 1px solid;
-      padding-bottom: 15px;
+      padding: 15px 0;
+      margin: 0;
     `}
   >
     {children}
