@@ -6,6 +6,8 @@ export type SceneTypes =
   | "setting"
   | "roleset"
   | "voting"
+  | "day"
+  | "night"
   | string;
 
 export type RoleIdTypes =
