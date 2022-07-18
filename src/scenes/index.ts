@@ -5,3 +5,5 @@ export * from "./Roulette";
 export * from "./Voting";
 export * from "./Setting";
 export * from "./RoleSet";
+export * from "./Day";
+export * from "./Night";
