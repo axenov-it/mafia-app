@@ -1,4 +1,5 @@
 import presetTypes from "mocks/presets.json";
+import rolesTypes from "mocks/roles.json";
 import { setSetting } from "redux-store/slices/settings";
 import { useDispatch } from "redux-store/hooks";
 import { useState } from "react";
@@ -11,6 +12,9 @@ export const useSetting = () => {
   const gamerItems = presetTypes.map(({ type }) => type);
   const presetType = presetTypes.find(({ type }) => type === countGamers);
   const preset = presetType?.presets.find(({ id }) => id === presetId);
+  const roles = preset?.roles.map((element) =>
+    rolesTypes.find(({ id }) => id === element)
+  );
 
   const onCountGamersChange = (count: number) => setCountGamers(count);
   const onPresetChange = (presetId: number) => setPresetId(presetId);
@@ -29,7 +33,7 @@ export const useSetting = () => {
     onPresetChange,
     gamerItems,
     presets: presetType?.presets || [],
-    roles: preset?.roles || [],
+    roles: roles,
     countGamers,
   };
 };
