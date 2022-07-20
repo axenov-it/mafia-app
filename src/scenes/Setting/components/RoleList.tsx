@@ -27,7 +27,7 @@ export const RolesList = ({ roles }: Props) => {
           }
         `}
       >
-        {roles?.map((role, index) => (
+        {roles.map((role, index) => (
           <li key={index}>{role.name}</li>
         ))}
       </div>

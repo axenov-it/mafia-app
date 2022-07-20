@@ -33,7 +33,7 @@ export const useSetting = () => {
     onPresetChange,
     gamerItems,
     presets: presetType?.presets || [],
-    roles: roles,
+    roles: roles || [],
     countGamers,
   };
 };
