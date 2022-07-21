@@ -39,7 +39,7 @@ export const Setting = () => {
         presets={presets}
       />
 
-      {countGamers || "" ? <RolesList roles={roles} /> : ""}
+      {countGamers ? <RolesList roles={roles} /> : ""}
     </div>
   );
 };

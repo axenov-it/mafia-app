@@ -1,8 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
+import { RoleInterface } from "common/interfaces";
 
 interface Props {
-  roles: string[];
+  roles: RoleInterface[];
 }
 
 export const RolesList = ({ roles }: Props) => (
@@ -26,7 +27,7 @@ export const RolesList = ({ roles }: Props) => (
       `}
     >
       {roles.map((role, index) => (
-        <li key={index}>{role}</li>
+        <li key={index}>{role.name}</li>
       ))}
     </div>
   </div>

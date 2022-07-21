@@ -1,7 +1,9 @@
 import presetTypes from "mocks/presets.json";
+import rolesTypes from "mocks/roles.json";
 import { setSetting } from "redux-store/slices/settings";
 import { useDispatch } from "redux-store/hooks";
 import { useState } from "react";
+import { RoleInterface } from "common/interfaces";
 
 export const useSetting = () => {
   const [countGamers, setCountGamers] = useState(0);
@@ -9,8 +11,13 @@ export const useSetting = () => {
 
   const dispatch = useDispatch();
   const gamerItems = presetTypes.map(({ type }) => type);
+
   const presetType = presetTypes.find(({ type }) => type === countGamers);
   const preset = presetType?.presets.find(({ id }) => id === presetId);
+
+  const roles = preset?.roles.map((roleId) =>
+    rolesTypes.find(({ id }) => id === roleId)
+  ) as RoleInterface[];
 
   const onCountGamersChange = (count: number) => setCountGamers(count);
   const onPresetChange = (presetId: number) => setPresetId(presetId);
@@ -29,7 +36,7 @@ export const useSetting = () => {
     onPresetChange,
     gamerItems,
     presets: presetType?.presets || [],
-    roles: preset?.roles || [],
+    roles: roles || [],
     countGamers,
   };
 };

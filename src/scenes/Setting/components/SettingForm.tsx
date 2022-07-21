@@ -80,7 +80,6 @@ export const SettingForm = ({
               ))}
             </Select>
             <FormHelperText error>
-              {" "}
               {touched.countGamers && errors.countGamers}
             </FormHelperText>
           </FormControl>
@@ -118,7 +117,6 @@ export const SettingForm = ({
               ))}
             </Select>
             <FormHelperText error>
-              {" "}
               {touched.preset && errors.preset}
             </FormHelperText>
           </FormControl>
