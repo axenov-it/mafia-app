@@ -26,16 +26,10 @@ export const SettingForm = ({
   gamerItems,
   presets,
 }: Props) => {
-  const {
-    errors,
-    values,
-    touched,
-    handleChange,
-    handleSubmit,
-    handleBlur,
-  } = useForm({
-    onSubmit,
-  });
+  const { errors, values, touched, handleChange, handleSubmit, handleBlur } =
+    useForm({
+      onSubmit,
+    });
 
   useEffect(() => {
     onCountGamersChange(Number(values.countGamers));
@@ -86,7 +80,6 @@ export const SettingForm = ({
               ))}
             </Select>
             <FormHelperText error>
-              {" "}
               {touched.countGamers && errors.countGamers}
             </FormHelperText>
           </FormControl>
@@ -124,7 +117,6 @@ export const SettingForm = ({
               ))}
             </Select>
             <FormHelperText error>
-              {" "}
               {touched.preset && errors.preset}
             </FormHelperText>
           </FormControl>
