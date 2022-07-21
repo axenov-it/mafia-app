@@ -12,8 +12,8 @@ export const useSetting = () => {
   const gamerItems = presetTypes.map(({ type }) => type);
   const presetType = presetTypes.find(({ type }) => type === countGamers);
   const preset = presetType?.presets.find(({ id }) => id === presetId);
-  const roles = preset?.roles.map((element) =>
-    rolesTypes.find(({ id }) => id === element)
+  const roles: any = preset?.roles.map((roleId) =>
+    rolesTypes.find(({ id }) => id === roleId)
   );
 
   const onCountGamersChange = (count: number) => setCountGamers(count);

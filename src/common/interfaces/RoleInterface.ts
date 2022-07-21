@@ -1,7 +1,7 @@
 import { RoleTypes } from "./types";
 
 export interface RoleInterface {
-  id: number;
+  id: string;
   type: RoleTypes;
   name: string;
   priority: number;
