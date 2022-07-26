@@ -54,7 +54,7 @@ export const useCooldown = (
         minCount.current = timer.cooldownTime;
         clearInterval(addTimeSecond);
       }
-    }, 200);
+    }, 100);
 
     return () => {
       clearInterval(addTimeSecond);

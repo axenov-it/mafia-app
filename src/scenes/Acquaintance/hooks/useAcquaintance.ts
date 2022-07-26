@@ -1,4 +1,5 @@
-import { useSettingsCountGamers } from "common/hooks";
+/* eslint-disable no-restricted-globals */
+import { useScene, useSettingsCountGamers } from "common/hooks";
 import { useRef, useState } from "react";
 
 export const useAcquaintance = (
@@ -8,11 +9,24 @@ export const useAcquaintance = (
   const countGamers = useSettingsCountGamers();
   const gamerIndex = useRef(1);
   const isGamerStarted = useRef(false);
+  const { runScene } = useScene();
 
   const [activeGamer, setActiveGamer] = useState(1);
 
   const onNextGamer = () => {
-    if (gamerIndex.current <= countGamers && !isGamerStarted.current) {
+    let isNextGamer = false;
+
+    if (countGamers === gamerIndex.current) {
+      return runScene("night", "Почати ніч ?");
+    }
+
+    if (isGamerStarted.current) {
+      isNextGamer = confirm("Ви дійсно бажаете перейти до наступного гравця ?");
+    }
+
+    if (!isNextGamer) return;
+
+    if (gamerIndex.current <= countGamers) {
       isGamerStarted.current = true;
       gamerIndex.current++;
       setActiveGamer(gamerIndex.current);

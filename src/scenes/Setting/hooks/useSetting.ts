@@ -4,10 +4,12 @@ import { setSetting } from "redux-store/slices/settings";
 import { useDispatch } from "redux-store/hooks";
 import { useState } from "react";
 import { RoleInterface } from "common/interfaces";
+import { useScene } from "common/hooks";
 
 export const useSetting = () => {
   const [countGamers, setCountGamers] = useState(0);
   const [presetId, setPresetId] = useState(0);
+  const { runScene } = useScene();
 
   const dispatch = useDispatch();
   const gamerItems = presetTypes.map(({ type }) => type);
@@ -27,7 +29,7 @@ export const useSetting = () => {
 
     dispatch(setSetting({ countGamers, preset }));
 
-    alert("Готово!");
+    runScene("acquaintance", "Начать знакомство ?");
   };
 
   return {
