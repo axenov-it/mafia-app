@@ -39,61 +39,77 @@ export const SettingForm = ({
     onPresetChange(Number(values.preset));
   }, [values.preset]);
 
+
   return (
     <form onSubmit={handleSubmit}>
       <div
         css={css`
           max-width: 500px;
           margin: 0 auto;
+          .MuiSvgIcon-root {
+                color: #ABB0C5;
+              }
+          .MuiFormControl-root,
+          .MuiFormLabel-root,
+          .MuiInputBase-root {
+            background: #1D1E26;
+            font-family: 'Cuprum';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 23px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: #ABB0C5;
+          }
         `}
       >
-        <div
+        <FormControl
           css={css`
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-            @media (max-width: 500px) {
-              flex-direction: column-reverse;
-            }
+              width: 100%;
           `}
         >
-          <FormControl
-            css={css`
-              width: 100%;
-              align-self: flex-start;
-            `}
+          <InputLabel>
+            Кількість гравців
+          </InputLabel>
+          <Select
+            name="countGamers"
+            value={values.countGamers}
+            label="кількість"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={touched.countGamers && Boolean(errors.countGamers)}
           >
-            <InputLabel>Кількість</InputLabel>
-            <Select
-              name="countGamers"
-              value={values.countGamers}
-              label="кількість"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              error={touched.countGamers && Boolean(errors.countGamers)}
-            >
-              {gamerItems.map((item) => (
-                <MenuItem key={item} value={item}>
-                  {item}
-                </MenuItem>
-              ))}
-            </Select>
-            <FormHelperText error>
-              {touched.countGamers && errors.countGamers}
-            </FormHelperText>
-          </FormControl>
-          <Button
-            type="submit"
-            variant="outlined"
-            css={css`
-              height: 56px;
-              align-self: flex-start;
-            `}
-          >
-            Зберегти
-          </Button>
-        </div>
+            {gamerItems.map((item) => (
+              <MenuItem key={item} value={item}
+                css={css`
+                  display: flex;
+                  justify-content: center;
+                  padding: 2px 91px;
+                  border-radius: 5px;
+                  font-family: 'Cuprum';
+                  font-style: normal;
+                  font-weight: 400;
+                  font-size: 20px;
+                  line-height: 23px;
+                  letter-spacing: 0.05em;
+                  color: #ABB0C5;
+                  &:hover {
+                    background: linear-gradient(122.36deg, #F0CD87 2.46%, #E0B169 99%);
+                    border-radius: 5px;                  
+                  }
+                `}
+              >
+                {item}
+              </MenuItem>
+            ))}
+          </Select>
+          <FormHelperText error>
+            {touched.countGamers && errors.countGamers}
+          </FormHelperText>
+        </FormControl>
+
+
         {values.countGamers && (
           <FormControl
             css={css`
@@ -101,7 +117,9 @@ export const SettingForm = ({
               width: 100%;
             `}
           >
-            <InputLabel>Оберіть гру</InputLabel>
+            <InputLabel>
+              Оберіть гру
+            </InputLabel>
             <Select
               name="preset"
               value={values.preset}
@@ -111,7 +129,25 @@ export const SettingForm = ({
               error={touched.preset && Boolean(errors.preset)}
             >
               {presets.map((preset) => (
-                <MenuItem key={preset.id} value={preset.id}>
+                <MenuItem key={preset.id} value={preset.id}
+                  css={css`
+                  display: flex;
+                  justify-content: center;
+                  padding: 19px 37px;
+                  font-family: 'Cuprum';
+                  font-style: normal;
+                  font-weight: 400;
+                  font-size: 27px;
+                  line-height: 31px;
+                  letter-spacing: 0.05em;
+                  text-transform: uppercase;
+                  color: #ABB0C5;
+                  &:hover {
+                    background: linear-gradient(122.36deg, #F0CD87 2.46%, #E0B169 99%);
+                    border-radius: 5px;                  
+                  }
+                `}
+                >
                   {preset.name}
                 </MenuItem>
               ))}
@@ -120,7 +156,9 @@ export const SettingForm = ({
               {touched.preset && errors.preset}
             </FormHelperText>
           </FormControl>
+
         )}
+
       </div>
     </form>
   );

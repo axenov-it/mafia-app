@@ -18,6 +18,11 @@ export const ResetStyles = () => (
       a {
         text-decoration: none;
       }
+      ul {
+        background: #1D1E26;
+        color: #fff;
+      }
+      
     `}
   />
 );

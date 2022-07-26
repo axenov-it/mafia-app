@@ -11,19 +11,28 @@ export const RolesList = ({ roles }: Props) => (
     css={css`
       max-width: 500px;
       margin: 0 auto;
+      h3,
+      li {
+        font-family: 'Cuprum';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 23px;
+        text-align: center;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: #ABB0C5;
+
+      }
     `}
   >
     <h3>Роли</h3>
     <div
       css={css`
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         flex-wrap: wrap;
-        li {
-          font-size: 17px;
-          font-weight: 500;
-          text-transform: capitalize;
-        }
+        
       `}
     >
       {roles.map((role, index) => (
