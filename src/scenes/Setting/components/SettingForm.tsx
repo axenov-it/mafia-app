@@ -1,15 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import Button from "@mui/material/Button";
 import { useForm } from "../hooks/useForm";
-import { useEffect } from "react";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
+import { ReactNode, useEffect } from "react";
+import { Select, MenuItem } from "common/components";
 import { PresetInterface } from "common/interfaces";
-import FormHelperText from "@mui/material/FormHelperText";
 
 interface Props {
   onSubmit: (data: any) => void;
@@ -17,6 +12,7 @@ interface Props {
   onCountGamersChange: (count: number) => void;
   gamerItems: number[];
   presets: PresetInterface[];
+  children: ReactNode;
 }
 
 export const SettingForm = ({
@@ -25,6 +21,7 @@ export const SettingForm = ({
   onPresetChange,
   gamerItems,
   presets,
+  children,
 }: Props) => {
   const { errors, values, touched, handleChange, handleSubmit, handleBlur } =
     useForm({
@@ -47,80 +44,40 @@ export const SettingForm = ({
           margin: 0 auto;
         `}
       >
-        <div
-          css={css`
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-            @media (max-width: 500px) {
-              flex-direction: column-reverse;
-            }
-          `}
+        <Select
+          name="countGamers"
+          value={values.countGamers}
+          label="Кількість гравців"
+          onChange={handleChange}
+          onBlur={handleBlur}
+          error={touched.countGamers && Boolean(errors.countGamers)}
+          errorText={errors.countGamers}
         >
-          <FormControl
-            css={css`
-              width: 100%;
-              align-self: flex-start;
-            `}
-          >
-            <InputLabel>Кількість</InputLabel>
-            <Select
-              name="countGamers"
-              value={values.countGamers}
-              label="кількість"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              error={touched.countGamers && Boolean(errors.countGamers)}
-            >
-              {gamerItems.map((item) => (
-                <MenuItem key={item} value={item}>
-                  {item}
-                </MenuItem>
-              ))}
-            </Select>
-            <FormHelperText error>
-              {touched.countGamers && errors.countGamers}
-            </FormHelperText>
-          </FormControl>
-          <Button
-            type="submit"
-            variant="outlined"
-            css={css`
-              height: 56px;
-              align-self: flex-start;
-            `}
-          >
-            Зберегти
-          </Button>
-        </div>
-        {values.countGamers && (
-          <FormControl
-            css={css`
-              margin-top: 20px;
-              width: 100%;
-            `}
-          >
-            <InputLabel>Оберіть гру</InputLabel>
-            <Select
-              name="preset"
-              value={values.preset}
-              label="Оберіть гру"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              error={touched.preset && Boolean(errors.preset)}
-            >
-              {presets.map((preset) => (
-                <MenuItem key={preset.id} value={preset.id}>
-                  {preset.name}
-                </MenuItem>
-              ))}
-            </Select>
-            <FormHelperText error>
-              {touched.preset && errors.preset}
-            </FormHelperText>
-          </FormControl>
-        )}
+          {gamerItems.map((item) => (
+            <MenuItem key={item} value={item}>
+              {item}
+            </MenuItem>
+          ))}
+        </Select>
+
+        <Select
+          isRender={!!values.countGamers}
+          name="preset"
+          value={values.preset}
+          label="Оберіть гру"
+          onChange={handleChange}
+          onBlur={handleBlur}
+          error={touched.preset && Boolean(errors.preset)}
+          errorText={errors.preset}
+        >
+          {presets.map((preset) => (
+            <MenuItem key={preset.id} value={preset.id}>
+              {preset.name}
+            </MenuItem>
+          ))}
+        </Select>
+
+        {children}
       </div>
     </form>
   );

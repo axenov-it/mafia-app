@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import Button from "@mui/material/Button";
+import { Button } from "common/components";
 
 export const Night = () => (
   <div
@@ -36,15 +36,9 @@ export const Night = () => (
     <Button
       css={css`
         width: 130px;
-        border: 2px solid #7c7070ab;
-        color: black;
         position: absolute;
-        bottom: 20px;
+        bottom: 25px;
         left: 20px;
-        background: #f1cf76;
-        font-family: "Courier New";
-        font-size: 25px;
-        letter-spacing: 0.2em;
       `}
     >
       Далі

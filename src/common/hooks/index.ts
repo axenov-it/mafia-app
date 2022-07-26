@@ -3,3 +3,4 @@ export * from "./useSettingsGamers";
 export * from "./useSettingsCountGamers";
 export * from "./useStartScene";
 export * from "./useScene";
+export * from "./usePaletteColor";

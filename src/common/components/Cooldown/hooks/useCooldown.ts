@@ -22,6 +22,7 @@ export const useCooldown = (
   const minCount = useRef(0);
 
   useEffect(() => {
+    sekCount.current = 60;
     timeTikerRef.current.innerText = 0;
     minCount.current = timer?.cooldownTime || 0;
 

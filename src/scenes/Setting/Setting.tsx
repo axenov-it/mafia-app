@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
+import { Button } from "common/components";
 import { RolesList, SettingForm } from "./components";
 import { useSetting } from "./hooks";
 
@@ -17,18 +18,25 @@ export const Setting = () => {
   return (
     <div
       css={css`
-        padding: 0 15px;
+        padding: 15px;
+        background: #11131a;
+        color: #fff;
+        text-align: center;
       `}
     >
       <h2
         css={css`
-          font-size: 1.7em;
-          font-weight: bold;
-          text-align: center;
-          margin-bottom: 30px;
+          font-family: "Cuprum";
+          font-style: normal;
+          font-weight: 400;
+          font-size: 35px;
+          line-height: 40px;
+          letter-spacing: 0.05em;
+          text-transform: uppercase;
+          color: #abb0c5;
         `}
       >
-        Встановлення конфігурації
+        Налаштування
       </h2>
 
       <SettingForm
@@ -37,9 +45,17 @@ export const Setting = () => {
         onPresetChange={onPresetChange}
         gamerItems={gamerItems}
         presets={presets}
-      />
-
-      {countGamers ? <RolesList roles={roles} /> : ""}
+      >
+        {countGamers ? <RolesList roles={roles} /> : ""}
+        <Button
+          css={css`
+            margin: 30px;
+          `}
+          type="submit"
+        >
+          Зберегти
+        </Button>
+      </SettingForm>
     </div>
   );
 };
