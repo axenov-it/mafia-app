@@ -14,7 +14,7 @@ export const useAcquaintance = (
   const [activeGamer, setActiveGamer] = useState(1);
 
   const onNextGamer = () => {
-    let isNextGamer = false;
+    let isNextGamer = true;
 
     if (countGamers === gamerIndex.current) {
       return runScene("night", "Почати ніч ?");
@@ -27,10 +27,10 @@ export const useAcquaintance = (
     if (!isNextGamer) return;
 
     if (gamerIndex.current <= countGamers) {
+      onResetTimer();
       isGamerStarted.current = true;
       gamerIndex.current++;
       setActiveGamer(gamerIndex.current);
-      onResetTimer();
     }
   };
 

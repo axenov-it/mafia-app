@@ -16,7 +16,6 @@ export const Button = ({ children, ...props }: ButtonProps) => {
         font-family: Cuprum;
         letter-spacing: 0.1em;
         line-height: 28px;
-        margin: 70px auto;
         padding: 15px 19px;
         width: 200px;
         color: ${themeColor.contrastText};

@@ -47,7 +47,14 @@ export const Setting = () => {
         presets={presets}
       >
         {countGamers ? <RolesList roles={roles} /> : ""}
-        <Button type="submit">Зберегти</Button>
+        <Button
+          css={css`
+            margin: 30px;
+          `}
+          type="submit"
+        >
+          Зберегти
+        </Button>
       </SettingForm>
     </div>
   );

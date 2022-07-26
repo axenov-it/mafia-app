@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import Button from "@mui/material/Button";
+import { Button } from "common/components";
 
 export const Day = () => (
   <div
