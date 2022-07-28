@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import PlayCircleFilledIcon from "@mui/icons-material/PlayCircleFilled";
-import { Button } from "@mui/material";
+import { Button } from "common/components";
 
 interface Props {
   isStart: boolean;
@@ -22,7 +22,7 @@ export const Navigation = ({
     css={css`
       display: flex;
       position: relative;
-      margin-top: 30px;
+      margin-top: 13px;
       align-items: center;
       justify-content: center;
       gap: 15px;
@@ -30,31 +30,16 @@ export const Navigation = ({
   >
     {isStart && (
       <>
-        <Button
-          onClick={onResetTimer}
-          variant="outlined"
-          color="inherit"
-          startIcon={<RestartAltIcon />}
-        >
+        <Button onClick={onResetTimer} variant="outlined" color="inherit">
           Ще хвилина
         </Button>
-        <Button
-          onClick={onNextGamer}
-          variant="outlined"
-          color="inherit"
-          startIcon={<ArrowCircleRightIcon />}
-        >
+        <Button onClick={onNextGamer} variant="outlined" color="inherit">
           Продовжити
         </Button>
       </>
     )}
     {!isStart && (
-      <Button
-        onClick={onStart}
-        variant="outlined"
-        color="inherit"
-        startIcon={<PlayCircleFilledIcon css={css``} />}
-      >
+      <Button onClick={onStart} variant="outlined" color="inherit">
         Почати Знайомство
       </Button>
     )}

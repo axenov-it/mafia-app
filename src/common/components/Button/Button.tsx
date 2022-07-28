@@ -11,13 +11,9 @@ export const Button = ({ children, ...props }: ButtonProps) => {
     <ButtonMUI
       {...props}
       css={css`
-        font-size: 24px;
         border-radius: 5px;
-        font-family: Cuprum;
         letter-spacing: 0.1em;
-        line-height: 28px;
-        padding: 15px 19px;
-        width: 200px;
+        padding: 6px 20px 5px 20px;
         color: ${themeColor.contrastText};
         background: ${themeColor.main};
         transition: 0.5s;

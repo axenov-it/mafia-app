@@ -7,6 +7,7 @@ const theme = createTheme({
       main: "rgba(240, 205, 135, 1)",
       // dark: will be calculated from palette.primary.main,
       contrastText: "#0c0d12",
+      // light: will be calculated from palette.primary.main,
     },
   },
 });
