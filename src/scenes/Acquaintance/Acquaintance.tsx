@@ -15,7 +15,12 @@ export const Acquaintance = () => {
   );
 
   return (
-    <div>
+    <div
+      css={css`
+        background: #11131a;
+        height: 100vh;
+      `}
+    >
       <Title>Знайомство</Title>
       <Navigation
         isStart={isStart}
@@ -27,12 +32,14 @@ export const Acquaintance = () => {
       <div
         css={css`
           display: flex;
-          justify-content: space-around;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
           margin-top: 30px;
         `}
       >
-        <GamerCard gamer={activeGamer} />
         <Cooldown timer={timer} onFinishTimer={onFinishTimer} />
+        <GamerCard gamer={activeGamer} />
       </div>
     </div>
   );

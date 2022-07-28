@@ -22,4 +22,12 @@ export type RoleIdTypes =
   | "admirer"
   | "peaceful";
 
+export type colorTypes =
+  | "primary"
+  | "secondary"
+  | "success"
+  | "info"
+  | "warning"
+  | "error";
+
 export type RoleTypes = "city" | "nigth" | "self" | string;

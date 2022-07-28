@@ -1,12 +1,5 @@
 import { useTheme } from "@mui/material";
-
-type colorTypes =
-  | "primary"
-  | "secondary"
-  | "success"
-  | "info"
-  | "warning"
-  | "error";
+import { colorTypes } from "common/interfaces";
 
 export const usePaletteColor = (color: colorTypes) => {
   const { palette } = useTheme();
