@@ -9,6 +9,13 @@ const theme = createTheme({
       contrastText: "#0c0d12",
       // light: will be calculated from palette.primary.main,
     },
+    secondary: {
+      // light: will be calculated from palette.primary.main,
+      main: "#1D1E26",
+      // dark: will be calculated from palette.primary.main,
+      contrastText: "#ABB0C5",
+      // light: will be calculated from palette.primary.main,
+    },
   },
 });
 

@@ -1,8 +1,5 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
-import RestartAltIcon from "@mui/icons-material/RestartAlt";
-import PlayCircleFilledIcon from "@mui/icons-material/PlayCircleFilled";
 import { Button } from "common/components";
 
 interface Props {
@@ -30,16 +27,16 @@ export const Navigation = ({
   >
     {isStart && (
       <>
-        <Button onClick={onResetTimer} variant="outlined" color="inherit">
+        <Button onClick={onResetTimer} variant="text" color="inherit">
           Ще хвилина
         </Button>
-        <Button onClick={onNextGamer} variant="outlined" color="inherit">
+        <Button onClick={onNextGamer} variant="contained" color="inherit">
           Продовжити
         </Button>
       </>
     )}
     {!isStart && (
-      <Button onClick={onStart} variant="outlined" color="inherit">
+      <Button onClick={onStart} variant="contained" color="inherit">
         Почати Знайомство
       </Button>
     )}
