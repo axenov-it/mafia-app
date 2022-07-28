@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { Scene } from "common/components";
+import { Scene, Header, StartGame } from "common/components";
 
 function App() {
   return (
@@ -10,7 +10,9 @@ function App() {
         margin: 0 auto;
       `}
     >
+      <Header />
       <Scene />
+      <StartGame />
     </div>
   );
 }

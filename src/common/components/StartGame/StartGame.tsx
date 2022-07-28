@@ -1,11 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { useStartGame } from "common/hooks/useStartGame";
+import { Button } from "common/components";
 
-export const Header = () => {
-  const { isStartGame } = useStartGame();
-
-  console.log(isStartGame);
+export const StartGame = () => {
+  const { isStartGame, startGame } = useStartGame();
 
   if (isStartGame) return <></>;
 
@@ -14,17 +13,12 @@ export const Header = () => {
       css={css`
         display: flex;
         justify-content: center;
-        padding: 15px 0;
-        background: black;
+        padding-top: 60px;
       `}
     >
-      <img
-        css={css`
-          max-width: 300px;
-        `}
-        src="img/logo2.png"
-        alt=""
-      />
+      <Button onClick={startGame} variant="contained">
+        Почати гру
+      </Button>
     </div>
   );
 };

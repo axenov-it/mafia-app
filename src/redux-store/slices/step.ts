@@ -7,7 +7,7 @@ import { StepInterface, SceneTypes } from "../../common/interfaces";
 const initialState: StepInterface = {
   isActive: false,
   type: "acquaintance",
-  scene: "acquaintance",
+  scene: "setting",
   isRepeat: false,
   isRequired: true,
   isUsed: false,

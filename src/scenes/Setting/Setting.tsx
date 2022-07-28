@@ -19,8 +19,6 @@ export const Setting = () => {
     <div
       css={css`
         padding: 15px;
-        background: #11131a;
-        color: #fff;
         text-align: center;
       `}
     >
