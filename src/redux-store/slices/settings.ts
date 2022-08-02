@@ -13,7 +13,7 @@ interface SettingState {
 
 // Define the initial state using that type
 const initialState: SettingState = {
-  isStartGame: false,
+  isStartGame: true,
   countGamers: initialRoles[0].type,
   preset: initialRoles[0].presets[0],
 };

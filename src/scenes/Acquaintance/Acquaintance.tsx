@@ -15,12 +15,7 @@ export const Acquaintance = () => {
   );
 
   return (
-    <div
-      css={css`
-        background: #11131a;
-        height: 100vh;
-      `}
-    >
+    <div>
       <Title>Знайомство</Title>
       <Navigation
         isStart={isStart}

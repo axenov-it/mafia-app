@@ -7,3 +7,4 @@ export * from "./Setting";
 export * from "./RoleSet";
 export * from "./Day";
 export * from "./Night";
+export * from "./NightActions";

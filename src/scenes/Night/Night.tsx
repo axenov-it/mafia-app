@@ -5,16 +5,24 @@ import { Button } from "common/components";
 export const Night = () => (
   <div
     css={css`
-      width: 350px;
-      height: 600px;
+      width: 100%;
       margin: auto;
-      margin-top: 20px;
-      background-image: url(./img/night.jpg);
       position: relative;
     `}
   >
+    <img
+      css={css`
+        width: 100%;
+        margin-top: -30px;
+      `}
+      src="./img/night.jpg"
+      alt=""
+    />
     <div
       css={css`
+        position: absolute;
+        z-index: 5;
+        top: 0;
         display: flex;
         flex-direction: column;
         padding: 20px;
@@ -37,8 +45,8 @@ export const Night = () => (
       css={css`
         width: 130px;
         position: absolute;
-        bottom: 25px;
         left: 20px;
+        top: 42%;
       `}
     >
       Далі

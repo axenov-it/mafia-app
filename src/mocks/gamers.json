@@ -1,0 +1,107 @@
+[
+  {
+    "id": 1,
+    "isActive": true,
+    "isBlocked": false,
+    "role": {
+      "id": "beauty",
+      "type": "city",
+      "name": "Красуня",
+      "priority": 1,
+      "isActiveNight": true,
+      "isDisabled": false,
+      "desctiption": "Грає за мирних, просинається у ночі та обирає одного гравця, цей гравець не має можливості використовувати свої здібності але і не може загинути",
+      "abilities": ["immortalBlock"]
+    }
+  },
+  {
+    "id": 2,
+    "isActive": true,
+    "isBlocked": false,
+    "role": {
+      "id": "doctor",
+      "name": "Лікарка",
+      "type": "city",
+      "isActiveNight": true,
+      "isDisabled": false,
+      "priority": 3,
+      "desctiption": "Грає за мирних, Просинається у ночі та лікує одного гравця, не можно лікувати себе чи іншого гравця 2 рази підряд",
+      "abilities": ["healing"]
+    }
+  },
+  {
+    "id": 3,
+    "isActive": true,
+    "isBlocked": false,
+    "role": {
+      "id": "godfather",
+      "name": "Хрещений батько",
+      "type": "mafia",
+      "isActiveNight": true,
+      "isDisabled": false,
+      "priority": 4,
+      "desctiption": "Лідер мафії, Просинаеться у ночі. Вирішує разом зі своєю командою в кого мафія буде стріляти у ночі",
+      "abilities": ["collectiveMafiaKilling"]
+    }
+  },
+  {
+    "id": 4,
+    "isActive": true,
+    "isBlocked": false,
+    "role": {
+      "id": "mafiosi",
+      "name": "Мафіозі",
+      "type": "mafia",
+      "isActiveNight": false,
+      "isDisabled": false,
+      "priority": 5,
+      "desctiption": "Грає за мафію",
+      "abilities": ["collectiveMafiaKilling"]
+    }
+  },
+  {
+    "id": 5,
+    "isActive": true,
+    "isBlocked": false,
+    "role": {
+      "id": "sheriff",
+      "name": "Шериф",
+      "type": "city",
+      "isActiveNight": true,
+      "isDisabled": false,
+      "priority": 7,
+      "desctiption": "Грає за мирних, Шериф просинається у ночі та має змогу перевіряти або стріляти",
+      "abilities": ["checkPersonTeam", "killing"]
+    }
+  },
+  {
+    "id": 6,
+    "isActive": true,
+    "isBlocked": false,
+    "role": {
+      "id": "admirer",
+      "name": "Шанувальниця",
+      "type": "city",
+      "isActiveNight": true,
+      "isDisabled": false,
+      "priority": 10,
+      "desctiption": "Грає за мирних, просинається у ночі та обирає одного гравця, якщо цей гравець шериф то дізнається його роль",
+      "abilities": ["checkSheriffRole"]
+    }
+  },
+  {
+    "id": 7,
+    "isActive": true,
+    "isBlocked": false,
+    "role": {
+      "id": "peaceful",
+      "name": "Мирний мешканець",
+      "type": "city",
+      "isActiveNight": false,
+      "isDisabled": false,
+      "priority": 20,
+      "desctiption": "Грає за мирних",
+      "abilities": []
+    }
+  }
+]
