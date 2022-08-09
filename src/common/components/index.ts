@@ -7,4 +7,4 @@ export * from "./Select";
 export * from "./MenuItem";
 export * from "./Button";
 export * from "./StartGame";
-export * from "./NigthGamer";
+export * from "./Gamer";

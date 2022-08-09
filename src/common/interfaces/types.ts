@@ -21,7 +21,8 @@ export type RoleIdTypes =
   | "maniac"
   | "detective"
   | "admirer"
-  | "peaceful";
+  | "peaceful"
+  | string;
 
 export type colorTypes =
   | "primary"

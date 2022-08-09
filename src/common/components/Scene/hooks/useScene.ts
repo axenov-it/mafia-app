@@ -8,7 +8,7 @@ import {
   Day,
   Night,
   NightActions,
-} from "scenes";
+} from "features/scenes";
 
 const Scenes: Record<SceneTypes, () => JSX.Element> = {
   acquaintance: Acquaintance,

@@ -10,6 +10,7 @@ export const GamerBottom = ({ children }: Props) => (
   <div
     css={css`
       bottom: 0;
+      position: absolute;
     `}
   >
     {children}

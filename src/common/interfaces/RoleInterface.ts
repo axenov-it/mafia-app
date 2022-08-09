@@ -1,7 +1,7 @@
-import { RoleTypes } from "./types";
+import { RoleTypes, RoleIdTypes } from "./types";
 
 export interface RoleInterface {
-  id: string;
+  id: RoleIdTypes;
   type: RoleTypes;
   name: string;
   priority: number;
