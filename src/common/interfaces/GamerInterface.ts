@@ -5,4 +5,5 @@ export interface GamerInterface {
   isActive: boolean;
   isBlocked: boolean;
   role: RoleInterface;
+  incomingAbilities: string[];
 }

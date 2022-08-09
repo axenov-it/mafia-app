@@ -1,28 +1,39 @@
-import { MenuItem, Select } from "common/components";
+import { Button, MenuItem, Select } from "common/components";
 import { useAbility } from "common/hooks";
 import { GamerInterface } from "common/interfaces";
 
 import { useBeauty } from "./hooks";
-import { RunNextGamerInterface } from "./interfaces";
+import { OnFinishAbilityInterface } from "../../interfaces";
 
 interface Props {
   gamer: GamerInterface;
   gamerNumbers: number[];
-  onFinishAbility: RunNextGamerInterface;
+  onFinishAbility: OnFinishAbilityInterface;
 }
 
 export const Beauty = ({ gamer, gamerNumbers, onFinishAbility }: Props) => {
   const ability = useAbility(gamer.role.abilities[0]);
 
-  useBeauty();
+  const { onChangeGamerId, gamerIdValue, onRunAbility } = useBeauty(
+    onFinishAbility,
+    ability
+  );
 
   return (
     <>
-      <Select label={ability.name}>
+      <Select
+        label={ability.name}
+        name={ability.id}
+        onChange={onChangeGamerId}
+        value={gamerIdValue}
+      >
         {gamerNumbers.map((gamerNumber) => (
-          <MenuItem key={gamerNumber}>{gamerNumber}</MenuItem>
+          <MenuItem key={gamerNumber} value={gamerNumber}>
+            {gamerNumber}
+          </MenuItem>
         ))}
       </Select>
+      <Button onClick={onRunAbility}>Використати здібність</Button>
     </>
   );
 };

@@ -12,9 +12,8 @@ export const gamersSlice = createSlice({
   // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
-    setGamers: (state, action: PayloadAction<GamerInterface[]>) => {
-      state = action.payload;
-    },
+    setGamers: (state, action: PayloadAction<GamerInterface[]>) =>
+      action.payload,
   },
 });
 

@@ -3,6 +3,7 @@
     "id": 1,
     "isActive": true,
     "isBlocked": false,
+    "incomingAbilities": [],
     "role": {
       "id": "beauty",
       "type": "city",
@@ -18,6 +19,7 @@
     "id": 2,
     "isActive": true,
     "isBlocked": false,
+    "incomingAbilities": [],
     "role": {
       "id": "doctor",
       "name": "Лікарка",
@@ -33,6 +35,7 @@
     "id": 3,
     "isActive": true,
     "isBlocked": false,
+    "incomingAbilities": [],
     "role": {
       "id": "godfather",
       "name": "Хрещений батько",
@@ -48,6 +51,7 @@
     "id": 4,
     "isActive": true,
     "isBlocked": false,
+    "incomingAbilities": [],
     "role": {
       "id": "mafiosi",
       "name": "Мафіозі",
@@ -63,6 +67,7 @@
     "id": 5,
     "isActive": true,
     "isBlocked": false,
+    "incomingAbilities": [],
     "role": {
       "id": "sheriff",
       "name": "Шериф",
@@ -78,6 +83,7 @@
     "id": 6,
     "isActive": true,
     "isBlocked": false,
+    "incomingAbilities": [],
     "role": {
       "id": "admirer",
       "name": "Шанувальниця",
@@ -93,6 +99,7 @@
     "id": 7,
     "isActive": true,
     "isBlocked": false,
+    "incomingAbilities": [],
     "role": {
       "id": "peaceful",
       "name": "Мирний мешканець",

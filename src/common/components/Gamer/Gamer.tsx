@@ -11,13 +11,14 @@ interface Props {
 
 export const Gamer = (props: Props) => {
   const {
-    gamer: { role },
+    gamer: { role, id },
   } = props;
 
   const GamerComponent = useGamer(role);
 
   return (
     <GamerCard>
+      <h2>Гравець-{id}</h2>
       <h2>{role.name}</h2>
 
       <GamerBottom>

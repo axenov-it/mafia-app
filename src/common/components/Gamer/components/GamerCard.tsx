@@ -16,7 +16,8 @@ export const GamerCard = ({ children }: Props) => (
       min-height: 600px;
       position: relative;
       display: flex;
-      justify-content: center;
+      align-items: center;
+      flex-direction: column;
     `}
   >
     {children}

@@ -18,5 +18,18 @@ export const useGamers = (filter?: FilterProps) => {
       return false;
     }),
     setGamers: (gamers: GamerInterface[]) => dispatch(setGamers(gamers)),
+    pushIncomingAbility: (gamerId: number, ability: string) =>
+      dispatch(
+        setGamers(
+          dataGamers.map((gamer) => {
+            return gamerId === gamer.id
+              ? {
+                  ...gamer,
+                  incomingAbilities: [...gamer.incomingAbilities, ability],
+                }
+              : gamer;
+          })
+        )
+      ),
   };
 };
