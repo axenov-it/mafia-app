@@ -32,3 +32,15 @@ export type colorTypes =
   | "error";
 
 export type RoleTypes = "city" | "nigth" | "self" | string;
+
+export type AbilityTypes =
+  | "block"
+  | "immortal"
+  | "immortalBlock"
+  | "healing"
+  | "checkRole"
+  | "checkPersonTeam"
+  | "killing"
+  | "сomparePersonsTeam"
+  | "checkSheriffRole"
+  | "collectiveMafiaKilling";

@@ -1,8 +1,8 @@
 import { NigthGamer } from "common/components";
-import { useGamer } from "./hooks";
+import { useNightActions } from "./hooks";
 
 export const NightActions = () => {
-  const { activeGamer } = useGamer();
+  const { activeGamer, gamerNumbers } = useNightActions();
 
-  return <NigthGamer gamer={activeGamer} />;
+  return <NigthGamer gamer={activeGamer} gamerNumbers={gamerNumbers} />;
 };
