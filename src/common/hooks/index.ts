@@ -5,3 +5,4 @@ export * from "./useStartScene";
 export * from "./useScene";
 export * from "./usePaletteColor";
 export * from "./useGamers";
+export * from "./useAbility";

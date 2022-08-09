@@ -11,6 +11,7 @@ export const GamerBottom = ({ children }: Props) => (
     css={css`
       bottom: 0;
       position: absolute;
+      width: 100%;
     `}
   >
     {children}

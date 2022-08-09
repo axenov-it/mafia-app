@@ -1,4 +1,4 @@
-import { RoleTypes, RoleIdTypes } from "./types";
+import { RoleTypes, RoleIdTypes, AbilityTypes } from "./types";
 
 export interface RoleInterface {
   id: RoleIdTypes;
@@ -8,5 +8,5 @@ export interface RoleInterface {
   isActiveNight: boolean;
   isDisabled: boolean;
   desctiption: string;
-  abilities: string[];
+  abilities: AbilityTypes[];
 }

@@ -9,19 +9,19 @@ interface Props {
   onFinishAbility: RunNextGamerInterface;
 }
 
-export const Gamer = ({ gamer, gamerNumbers, onFinishAbility }: Props) => {
-  const GamerComponent = useGamer(gamer.role);
+export const Gamer = (props: Props) => {
+  const {
+    gamer: { role },
+  } = props;
+
+  const GamerComponent = useGamer(role);
 
   return (
     <GamerCard>
-      <h2>{gamer.role.name}</h2>
+      <h2>{role.name}</h2>
 
       <GamerBottom>
-        <GamerComponent
-          gamer={gamer}
-          gamerNumbers={gamerNumbers}
-          onFinishAbility={onFinishAbility}
-        />
+        <GamerComponent {...props} />
       </GamerBottom>
     </GamerCard>
   );

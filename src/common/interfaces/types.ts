@@ -44,4 +44,5 @@ export type AbilityTypes =
   | "killing"
   | "сomparePersonsTeam"
   | "checkSheriffRole"
-  | "collectiveMafiaKilling";
+  | "collectiveMafiaKilling"
+  | string;
