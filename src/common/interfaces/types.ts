@@ -1,3 +1,5 @@
+import { GamerInterface } from "./GamerInterface";
+
 export type SceneTypes =
   | "acquaintance"
   | "cards"
@@ -46,3 +48,13 @@ export type AbilityTypes =
   | "checkSheriffRole"
   | "collectiveMafiaKilling"
   | string;
+
+export type GamerType = ({
+  gamer,
+  gamerNumbers,
+  onFinishAbility,
+}: {
+  gamer: GamerInterface;
+  gamerNumbers: number[];
+  onFinishAbility: (value: number) => void;
+}) => JSX.Element;

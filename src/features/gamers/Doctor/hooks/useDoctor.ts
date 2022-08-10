@@ -3,7 +3,7 @@ import { AbilityInterface, GamerInterface } from "common/interfaces";
 import { useState } from "react";
 import { OnFinishAbilityInterface } from "../../../interfaces";
 
-export const useBeauty = (
+export const useDoctor = (
   onFinishAbility: OnFinishAbilityInterface,
   ability: AbilityInterface
 ) => {

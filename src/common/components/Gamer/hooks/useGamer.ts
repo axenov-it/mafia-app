@@ -1,17 +1,17 @@
-import { RoleIdTypes, RoleInterface } from "common/interfaces";
-import { Beauty, Sheriff } from "features/gamers";
+import { GamerType, RoleIdTypes, RoleInterface } from "common/interfaces";
+import { Beauty, Doctor } from "features/gamers";
 
-const gamers: Record<RoleIdTypes, typeof Beauty | typeof Sheriff> = {
+const gamers: Record<RoleIdTypes, GamerType> = {
   beauty: Beauty,
-  sheriff: Sheriff,
-  doctor: Sheriff,
-  admirer: Sheriff,
-  detective: Sheriff,
-  godfather: Sheriff,
-  mafiosi: Sheriff,
-  maniac: Sheriff,
-  peaceful: Sheriff,
-  scrounger: Sheriff,
+  sheriff: Beauty,
+  doctor: Doctor,
+  admirer: Beauty,
+  detective: Beauty,
+  godfather: Beauty,
+  mafiosi: Beauty,
+  maniac: Beauty,
+  peaceful: Beauty,
+  scrounger: Beauty,
 };
 
 export const useGamer = (role: RoleInterface) => gamers[role.id];
