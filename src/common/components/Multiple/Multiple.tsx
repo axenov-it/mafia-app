@@ -25,7 +25,7 @@ interface Props {
   options: number[];
   onChange: (value: number[]) => void;
   title: string;
-  resetValue: number;
+  resetValue?: number;
   maxSelected?: number;
 }
 

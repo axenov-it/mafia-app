@@ -13,14 +13,18 @@ export const useDoctor = (
   const onChangeGamerId = (e: any) => setGamerIdValue(e.target.value);
 
   const onRunAbility = (e: any) => {
+    if (!gamerIdValue) return alert("Оберіть гравця!");
+
+    const pushedGamer = gamers.find(
+      ({ id }) => id === Number(gamerIdValue)
+    ) as GamerInterface;
+
     // eslint-disable-next-line no-restricted-globals
-    const isRunAbility = confirm("Використати здібність ?");
+    const isRunAbility = confirm(
+      `Використати здібність в ${pushedGamer.role.name} ?`
+    );
 
-    if (isRunAbility && gamerIdValue) {
-      const pushedGamer = gamers.find(
-        ({ id }) => id === Number(gamerIdValue)
-      ) as GamerInterface;
-
+    if (isRunAbility) {
       pushIncomingAbility(pushedGamer.id, ability.id);
       onFinishAbility(0);
     }

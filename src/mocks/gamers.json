@@ -85,6 +85,22 @@
     "isBlocked": false,
     "incomingAbilities": [],
     "role": {
+      "id": "detective",
+      "name": "Детектив",
+      "type": "city",
+      "isActiveNight": true,
+      "isDisabled": false,
+      "priority": 9,
+      "desctiption": "Грає за мирних, просинається у ночі, вибирає двух гравців, та може дізнатися грають вони за одну команду або ні",
+      "abilities": ["сomparePersonsTeam"]
+    }
+  },
+  {
+    "id": 7,
+    "isActive": true,
+    "isBlocked": false,
+    "incomingAbilities": [],
+    "role": {
       "id": "admirer",
       "name": "Шанувальниця",
       "type": "city",
@@ -96,7 +112,7 @@
     }
   },
   {
-    "id": 7,
+    "id": 8,
     "isActive": true,
     "isBlocked": false,
     "incomingAbilities": [],
