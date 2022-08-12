@@ -4,7 +4,7 @@ import { useState } from "react";
 export const useNightActions = () => {
   const { gamers } = useGamers({ isActiveNight: true });
   const [gamerNumbers, setGamerNumbers] = useState(gamers.map(({ id }) => id));
-  const [currentIndex, setCurrentIndex] = useState(3);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const activeGamer = gamers[currentIndex];
 
