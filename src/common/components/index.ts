@@ -8,3 +8,4 @@ export * from "./MenuItem";
 export * from "./Button";
 export * from "./StartGame";
 export * from "./Gamer";
+export * from "./Multiple";

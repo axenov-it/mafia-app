@@ -1,9 +1,9 @@
 import { GamerType, RoleIdTypes, RoleInterface } from "common/interfaces";
-import { Beauty, Doctor, Godfather } from "features/gamers";
+import { Beauty, Doctor, Godfather, Sheriff } from "features/gamers";
 
 const gamers: Record<RoleIdTypes, GamerType> = {
   beauty: Beauty,
-  sheriff: Beauty,
+  sheriff: Sheriff,
   doctor: Doctor,
   admirer: Beauty,
   detective: Beauty,
