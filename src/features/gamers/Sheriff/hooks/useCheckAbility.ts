@@ -5,7 +5,8 @@ import { useGamers } from "common/hooks";
 
 export const useCheckAbility = (
   onFinishAbility: OnFinishAbilityInterface,
-  roleType: RoleTypes
+  roleType: RoleTypes,
+  checkIsBlocked: () => boolean
 ) => {
   const [gamerIdCheckValue, setGamerIdCheckValue] = useState("");
   const { gamers } = useGamers();
@@ -15,6 +16,7 @@ export const useCheckAbility = (
   const onRunAbilityCheck = (e: any) => {
     // eslint-disable-next-line no-restricted-globals
     const isRunAbility = confirm("Використати здібність перевірка ?");
+    if (checkIsBlocked()) return;
 
     if (isRunAbility && gamerIdCheckValue) {
       const checkedGamer = gamers.find(

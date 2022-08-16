@@ -5,7 +5,8 @@ import { OnFinishAbilityInterface } from "../../../interfaces";
 
 export const useDoctor = (
   onFinishAbility: OnFinishAbilityInterface,
-  ability: AbilityInterface
+  ability: AbilityInterface,
+  checkIsBlocked: () => boolean
 ) => {
   const [gamerIdValue, setGamerIdValue] = useState("");
   const { gamers, pushIncomingAbility } = useGamers();
@@ -14,6 +15,7 @@ export const useDoctor = (
 
   const onRunAbility = (e: any) => {
     if (!gamerIdValue) return alert("Оберіть гравця!");
+    if (checkIsBlocked()) return;
 
     const pushedGamer = gamers.find(
       ({ id }) => id === Number(gamerIdValue)

@@ -5,7 +5,8 @@ import { OnFinishAbilityInterface } from "../../../interfaces";
 
 export const useGodfather = (
   onFinishAbility: OnFinishAbilityInterface,
-  ability: AbilityInterface
+  ability: AbilityInterface,
+  checkIsBlocked: () => boolean
 ) => {
   const [gamerIdValue, setGamerIdValue] = useState("");
   const { gamers, pushIncomingAbility } = useGamers();
@@ -15,6 +16,7 @@ export const useGodfather = (
   const onRunAbility = (e: any) => {
     // eslint-disable-next-line no-restricted-globals
     const isRunAbility = confirm("Використати здібність ?");
+    if (checkIsBlocked()) return;
 
     if (isRunAbility && gamerIdValue) {
       const pushedGamer = gamers.find(

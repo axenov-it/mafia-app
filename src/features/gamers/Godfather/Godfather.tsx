@@ -8,12 +8,14 @@ export const Godfather = ({
   gamer,
   gamerNumbers,
   onFinishAbility,
+  checkIsBlocked,
 }: GamerPropsInterface) => {
   const ability = useAbility(gamer.role.abilities[0]);
 
   const { onChangeGamerId, gamerIdValue, onRunAbility } = useGodfather(
     onFinishAbility,
-    ability
+    ability,
+    checkIsBlocked
   );
 
   return (

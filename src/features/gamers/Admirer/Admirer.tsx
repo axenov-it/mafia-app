@@ -8,11 +8,12 @@ export const Admirer = ({
   gamer,
   gamerNumbers,
   onFinishAbility,
+  checkIsBlocked,
 }: GamerPropsInterface) => {
   const abilityCheck = useAbility(gamer.role.abilities[0]);
 
   const { gamerIdCheckValue, onChangeGamerCheckId, onRunAbilityCheck } =
-    useCheckAbility(onFinishAbility);
+    useCheckAbility(onFinishAbility, checkIsBlocked);
 
   return (
     <>

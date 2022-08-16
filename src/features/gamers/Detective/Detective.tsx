@@ -8,11 +8,14 @@ export const Detective = ({
   gamer,
   gamerNumbers,
   onFinishAbility,
+  checkIsBlocked,
 }: GamerPropsInterface) => {
   const abilityCheck = useAbility(gamer.role.abilities[0]);
 
-  const { onChangeGamerCheckIds, onRunAbilityCheck } =
-    useCheckAbility(onFinishAbility);
+  const { onChangeGamerCheckIds, onRunAbilityCheck } = useCheckAbility(
+    onFinishAbility,
+    checkIsBlocked
+  );
 
   return (
     <>

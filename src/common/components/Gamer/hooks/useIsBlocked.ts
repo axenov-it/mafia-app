@@ -6,13 +6,15 @@ export const useIsBlocked = (
   onFinishAbility: RunNextGamerInterface
 ) => ({
   checkIsBlocked: () => {
-    const ability = gamer.incomingAbilities.find(
+    const isBlocked = !!gamer.incomingAbilities.find(
       ({ id }) => id === "block" || id === "immortalBlock"
     );
 
-    alert("Гравець заблокованный");
-    onFinishAbility(0);
+    if (isBlocked) {
+      alert("Гравець заблокованный");
+      onFinishAbility(0);
+    }
 
-    return !!ability;
+    return isBlocked;
   },
 });

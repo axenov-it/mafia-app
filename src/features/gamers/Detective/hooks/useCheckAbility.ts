@@ -3,7 +3,10 @@ import { useState } from "react";
 import { OnFinishAbilityInterface } from "../../../interfaces";
 import { useGamers } from "common/hooks";
 
-export const useCheckAbility = (onFinishAbility: OnFinishAbilityInterface) => {
+export const useCheckAbility = (
+  onFinishAbility: OnFinishAbilityInterface,
+  checkIsBlocked: () => boolean
+) => {
   const [gamerIdsCheckValue, setGamerIdsCheckValue] = useState<number[]>([]);
   const { gamers } = useGamers();
 
@@ -13,6 +16,8 @@ export const useCheckAbility = (onFinishAbility: OnFinishAbilityInterface) => {
   const onRunAbilityCheck = (e: any) => {
     // eslint-disable-next-line no-restricted-globals
     const isRunAbility = confirm("Використати здібність перевірка ?");
+
+    if (checkIsBlocked()) return;
 
     if (gamerIdsCheckValue.length < 2) return;
 

@@ -5,7 +5,8 @@ import { useGamers } from "common/hooks";
 
 export const useKillAbility = (
   onFinishAbility: OnFinishAbilityInterface,
-  ability: AbilityInterface
+  ability: AbilityInterface,
+  checkIsBlocked: () => boolean
 ) => {
   const [gamerIdKillValue, setGamerIdKillValue] = useState("");
   const { gamers, pushIncomingAbility } = useGamers();
@@ -15,6 +16,7 @@ export const useKillAbility = (
   const onRunAbilityKill = (e: any) => {
     // eslint-disable-next-line no-restricted-globals
     const isRunAbility = confirm("Використати здібність вбивство ?");
+    if (checkIsBlocked()) return;
 
     if (isRunAbility && gamerIdKillValue) {
       const pushedGamer = gamers.find(

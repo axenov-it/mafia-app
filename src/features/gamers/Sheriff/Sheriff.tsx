@@ -8,6 +8,7 @@ export const Sheriff = ({
   gamer,
   gamerNumbers,
   onFinishAbility,
+  checkIsBlocked,
 }: GamerPropsInterface) => {
   const abilityCheck = useAbility(gamer.role.abilities[0]);
   const abilityKill = useAbility(gamer.role.abilities[1]);
@@ -17,10 +18,10 @@ export const Sheriff = ({
     onChangeGamerCheckId,
     onRunAbilityCheck,
     resetCheck,
-  } = useCheckAbility(onFinishAbility, gamer.role.type);
+  } = useCheckAbility(onFinishAbility, gamer.role.type, checkIsBlocked);
 
   const { gamerIdKillValue, onChangeGamerKillId, onRunAbilityKill, resetKill } =
-    useKillAbility(onFinishAbility, abilityKill);
+    useKillAbility(onFinishAbility, abilityKill, checkIsBlocked);
 
   return (
     <>
