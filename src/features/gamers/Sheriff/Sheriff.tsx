@@ -1,17 +1,14 @@
 import { Button, MenuItem, Select } from "common/components";
 import { useAbility } from "common/hooks";
-import { GamerInterface } from "common/interfaces";
+import { GamerPropsInterface } from "common/interfaces";
 
 import { useKillAbility, useCheckAbility } from "./hooks";
-import { OnFinishAbilityInterface } from "../../interfaces";
 
-interface Props {
-  gamer: GamerInterface;
-  gamerNumbers: number[];
-  onFinishAbility: OnFinishAbilityInterface;
-}
-
-export const Sheriff = ({ gamer, gamerNumbers, onFinishAbility }: Props) => {
+export const Sheriff = ({
+  gamer,
+  gamerNumbers,
+  onFinishAbility,
+}: GamerPropsInterface) => {
   const abilityCheck = useAbility(gamer.role.abilities[0]);
   const abilityKill = useAbility(gamer.role.abilities[1]);
 

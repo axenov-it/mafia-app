@@ -85,22 +85,24 @@ export const useGamers = (filter?: FilterProps) => {
 
       return false;
     }),
+
     setGamers: (gamers: GamerInterface[]) => dispatch(setGamers(gamers)),
+
     pushIncomingAbility: (
-      gamerId: number,
+      pushGamerId: number,
       ability: string,
       options?: PushedGamerOptionsInterface
     ) =>
       dispatch(
         setGamers(
-          dataGamers.map((gamer) => {
-            return gamerId === gamer.id
+          dataGamers.map((gamer) =>
+            pushGamerId === gamer.id
               ? compose(
                   getPushedGamer,
                   getProtectionGamer
                 )({ gamer, ability, gameCircle: 1, options })
-              : gamer;
-          })
+              : gamer
+          )
         )
       ),
   };

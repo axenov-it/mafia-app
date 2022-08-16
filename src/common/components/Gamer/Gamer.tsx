@@ -1,6 +1,6 @@
 import { GamerInterface } from "common/interfaces";
 import { GamerCard, GamerBottom } from "./components";
-import { useGamer } from "./hooks";
+import { useGamer, useIsBlocked } from "./hooks";
 import { RunNextGamerInterface } from "./interface";
 
 interface Props {
@@ -12,8 +12,10 @@ interface Props {
 export const Gamer = (props: Props) => {
   const {
     gamer: { role, id },
+    onFinishAbility,
   } = props;
 
+  const { checkIsBlocked } = useIsBlocked(props.gamer, onFinishAbility);
   const GamerComponent = useGamer(role);
 
   return (
@@ -22,7 +24,7 @@ export const Gamer = (props: Props) => {
       <h2>{role.name}</h2>
 
       <GamerBottom>
-        <GamerComponent {...props} />
+        <GamerComponent {...props} checkIsBlocked={checkIsBlocked} />
       </GamerBottom>
     </GamerCard>
   );

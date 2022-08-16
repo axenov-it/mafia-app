@@ -1,17 +1,14 @@
 import { Button, MenuItem, Select } from "common/components";
 import { useAbility } from "common/hooks";
-import { GamerInterface } from "common/interfaces";
+import { GamerPropsInterface } from "common/interfaces";
 
 import { useBeauty } from "./hooks";
-import { OnFinishAbilityInterface } from "../../interfaces";
 
-interface Props {
-  gamer: GamerInterface;
-  gamerNumbers: number[];
-  onFinishAbility: OnFinishAbilityInterface;
-}
-
-export const Beauty = ({ gamer, gamerNumbers, onFinishAbility }: Props) => {
+export const Beauty = ({
+  gamer,
+  gamerNumbers,
+  onFinishAbility,
+}: GamerPropsInterface) => {
   const ability = useAbility(gamer.role.abilities[0]);
 
   const { onChangeGamerId, gamerIdValue, onRunAbility } = useBeauty(

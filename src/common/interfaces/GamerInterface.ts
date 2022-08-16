@@ -14,3 +14,10 @@ export interface GamerInterface {
   role: RoleInterface;
   incomingAbilities: GamerIcoumingAbility[];
 }
+
+export interface GamerPropsInterface {
+  gamer: GamerInterface;
+  gamerNumbers: number[];
+  onFinishAbility: (value: number) => void;
+  checkIsBlocked: () => boolean;
+}
